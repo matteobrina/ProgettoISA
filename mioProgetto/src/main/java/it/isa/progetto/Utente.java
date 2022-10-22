@@ -59,6 +59,11 @@ public class Utente {
         this.playlist.add(index, playlist);
     }
 
+    public void setPlaylist(Playlist playlist)
+    {
+        this.playlist.add(playlist);
+    }
+
     public Playlist getPlaylist(int index)
     {
         return this.playlist.get(index);
