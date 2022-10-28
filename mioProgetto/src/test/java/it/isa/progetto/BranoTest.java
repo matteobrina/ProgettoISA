@@ -1,0 +1,153 @@
+package it.isa.progetto;
+
+import org.junit.jupiter.api.TestInstance;
+
+import static org.junit.Assert.assertEquals;
+
+import java.lang.reflect.Field;
+
+import org.junit.Test;
+import org.junit.jupiter.api.TestInstance.Lifecycle;
+
+
+
+
+@TestInstance(Lifecycle.PER_CLASS)
+public class BranoTest {   
+    
+    
+    @Test
+    public void testSetId() throws NoSuchFieldException, IllegalAccessException {
+        //given
+        final int id=5;
+        final Brano brano = new Brano();
+
+        //when
+        brano.setId(id);
+
+        //then
+        final Field field = brano.getClass().getDeclaredField("id");
+        field.setAccessible(true);
+        assertEquals("Fields didn't match", field.get(brano), id);
+
+    }
+
+    @Test
+    public void testGetId() throws NoSuchFieldException, IllegalAccessException {
+        //given
+        final Brano brano = new Brano();
+        final int id=7;
+        final Field field = brano.getClass().getDeclaredField("id");
+        field.setAccessible(true);
+        field.set(brano, id);
+
+        //when
+        final int result = brano.getId();
+
+        //then
+        assertEquals("field wasn't retrieved properly", result, id);
+    }
+
+
+    @Test
+    public void testSetTitolo() throws NoSuchFieldException, IllegalAccessException {
+        //given
+        final Brano brano = new Brano();
+
+        //when
+        brano.setTitolo("testsettitolo");
+
+        //then
+        final Field field = brano.getClass().getDeclaredField("titolo");
+        field.setAccessible(true);
+        assertEquals("Fields didn't match", field.get(brano), "testsettitolo");
+
+    }
+
+    @Test
+    public void testGetTitolo() throws NoSuchFieldException, IllegalAccessException {
+        //given
+        final Brano brano = new Brano();
+        final Field field = brano.getClass().getDeclaredField("titolo");
+        field.setAccessible(true);
+        field.set(brano, "testgettitolo");
+
+        //when
+        final String result = brano.getTitolo();
+
+        //then
+        assertEquals("field wasn't retrieved properly", result, "testgettitolo");
+    }
+
+    @Test
+    public void testSetAlbum() throws NoSuchFieldException, IllegalAccessException {
+        //given
+        final Brano brano = new Brano();
+
+        //when
+        brano.setAlbum("testsetalbum");
+
+        //then
+        final Field field = brano.getClass().getDeclaredField("album");
+        field.setAccessible(true);
+        assertEquals("Fields didn't match", field.get(brano), "testsetalbum");
+
+    }
+
+    @Test
+    public void testGetAlbum() throws NoSuchFieldException, IllegalAccessException {
+        //given
+        final Brano brano = new Brano();
+        final Field field = brano.getClass().getDeclaredField("album");
+        field.setAccessible(true);
+        field.set(brano, "testgetalbum");
+
+        //when
+        final String result = brano.getAlbum();
+
+        //then
+        assertEquals("field wasn't retrieved properly", result, "testgetalbum");
+    }
+
+    @Test
+    public void testSetCanzone() throws NoSuchFieldException, IllegalAccessException {
+        //given
+        final Brano brano = new Brano();
+        final String a = "testsetcanzone";
+        final byte[] b = a.getBytes();
+
+        //when
+        brano.setCanzone(b);
+
+        //then
+        final Field field = brano.getClass().getDeclaredField("canzone");
+        field.setAccessible(true);
+        assertEquals("Fields didn't match", field.get(brano), b);
+
+    }
+
+    @Test
+    public void testGetCanzone() throws NoSuchFieldException, IllegalAccessException {
+        //given
+        final Brano brano = new Brano();
+        final String a = "testgetcanzone";
+        final byte[] b = a.getBytes();
+        final Field field = brano.getClass().getDeclaredField("canzone");
+        field.setAccessible(true);
+        field.set(brano, b);
+
+        //when
+        final byte[] result = brano.getCanzone();
+
+        //then
+        assertEquals("field wasn't retrieved properly", result, b);
+    }
+
+    
+
+}
+    
+    
+    
+    
+    
