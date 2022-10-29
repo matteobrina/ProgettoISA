@@ -6,6 +6,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.lang.reflect.Field;
 
+
 import org.junit.Test;
 import org.junit.jupiter.api.TestInstance.Lifecycle;
 
@@ -142,6 +143,72 @@ public class BranoTest {
         //then
         assertEquals("field wasn't retrieved properly", result, b);
     }
+
+    @Test
+    public void testSetArtista() throws NoSuchFieldException, IllegalAccessException {
+        //given
+        final Brano brano = new Brano();
+
+        //when
+        brano.setArtista("testsetartista");
+
+        //then
+        final Field field = brano.getClass().getDeclaredField("artista");
+        field.setAccessible(true);
+        assertEquals("Fields didn't match", field.get(brano), "testsetartista");
+
+    }
+
+    @Test
+    public void testGetArtista() throws NoSuchFieldException, IllegalAccessException {
+        //given
+        final Brano brano = new Brano();
+        final Field field = brano.getClass().getDeclaredField("artista");
+        field.setAccessible(true);
+        field.set(brano, "testgetartista");
+
+        //when
+        final String result = brano.getArtista();
+
+        //then
+        assertEquals("field wasn't retrieved properly", result, "testgetartista");
+    }
+
+    @Test
+    public void testSetAscolti() throws NoSuchFieldException, IllegalAccessException {
+        //given
+        final Brano brano = new Brano();
+        final int a = 9;
+
+        //when
+        brano.setAscolti(a);
+
+        //then
+        final Field field = brano.getClass().getDeclaredField("ascolti");
+        field.setAccessible(true);
+        assertEquals("Fields didn't match", field.get(brano), a);
+
+    }
+
+    @Test
+    public void testGetAscolti() throws NoSuchFieldException, IllegalAccessException {
+        //given
+        final Brano brano = new Brano();
+        final int a = 15;
+        final Field field = brano.getClass().getDeclaredField("ascolti");
+        field.setAccessible(true);
+        field.set(brano, a);
+
+        //when
+        final int result = brano.getAscolti();
+
+        //then
+        assertEquals("field wasn't retrieved properly", result, a);
+    }
+
+  
+
+    
 
     
 
