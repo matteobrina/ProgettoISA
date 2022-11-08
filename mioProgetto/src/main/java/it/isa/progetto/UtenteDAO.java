@@ -39,7 +39,11 @@ public class UtenteDAO {
         if(rs.next())
         exist=true;
         if(exist)
-       { throw new DuplicatedObjectException("L'utente esiste già");}
+       {
+        rs.close();
+        ps.close();
+        throw new DuplicatedObjectException("L'utente esiste già");
+        }
         else
         {
             sql = "insert into Utente"
@@ -59,7 +63,7 @@ public class UtenteDAO {
             i=1;
             ps.setString(i++, username);
             rs=ps.executeQuery();
-            if(rs.next())
+            rs.next();
             utente.setId(rs.getInt("id"));
             rs.close();
             ps.close();
@@ -84,7 +88,7 @@ public class UtenteDAO {
 
     }
 
-    public Utente findById(int id)
+    public Utente findById(int id) throws MissingObjectException
     {
         Utente utente = new Utente();
         PreparedStatement ps;
@@ -104,10 +108,65 @@ public class UtenteDAO {
             utente.setId(rs.getInt("id"));
             utente.setUsername(rs.getString("username"));
             utente.setPassword(rs.getString("password"));
+            rs.close();
+            ps.close();
         }
 
-        rs.close();
-        ps.close();
+        else {
+            rs.close();
+            ps.close();
+            throw new MissingObjectException("utente non trovato");
+        }
+
+       
+
+
+
+
+        }
+
+        catch(SQLException e)
+        {
+            System.out.println(e.getMessage());
+        }
+
+        return utente;
+    
+        
+    }
+
+
+    public Utente findByUsername(String username) throws MissingObjectException
+    {
+        Utente utente = new Utente();
+        PreparedStatement ps;
+
+        try{
+        String sql = "SELECT *"
+                    +" FROM Utente"
+                    +" WHERE Username = ?";
+
+        ps=conn.prepareStatement(sql);
+        int i=1;
+        ps.setString(i++, username);
+
+        ResultSet rs = ps.executeQuery();
+        if(rs.next())
+        {
+            utente.setId(rs.getInt("id"));
+            utente.setUsername(rs.getString("username"));
+            utente.setPassword(rs.getString("password"));
+            rs.close();
+            ps.close();
+        }
+
+        else {
+            rs.close();
+            ps.close();
+            throw new MissingObjectException("utente non trovato");
+        }
+
+        
 
 
 
@@ -144,7 +203,10 @@ public class UtenteDAO {
         if(rs.next())
         exist=true;
         if(!exist)
-       {throw new MissingObjectException("l'oggetto non esiste");}
+       {rs.close();
+        ps.close();
+        
+        throw new MissingObjectException("l'utente non esiste");}
                      else
                      {
                         sql = "DELETE"
