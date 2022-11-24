@@ -26,6 +26,16 @@
       <scope>test</scope>
 </dependency>
 
+<!-- https://mvnrepository.com/artifact/org.openjfx/javafx-swing -->
+<dependency>
+  <groupId>org.openjfx</groupId>
+  <artifactId>javafx-swing</artifactId>
+  <version>20-ea+6</version>
+</dependency>
+
+
+
+
     <dependency>
       <groupId>org.jacoco</groupId>
       <artifactId>jacoco-maven-plugin</artifactId>
