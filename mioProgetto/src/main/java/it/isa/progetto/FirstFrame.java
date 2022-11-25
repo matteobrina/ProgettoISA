@@ -14,6 +14,7 @@ public class FirstFrame extends JFrame {
     FirstPanel fp = new FirstPanel();
     LoginPanel lp = new LoginPanel();
     RegisterPanel rp = new RegisterPanel();
+    MainPanel mp= new MainPanel();
     CardLayout cl = new CardLayout();
     public FirstFrame()
     {
@@ -25,8 +26,9 @@ public class FirstFrame extends JFrame {
         container.add(fp, "1");
         container.add(lp, "2");
         container.add(rp, "3");
+        container.add(mp, "4");
 
-        cl.show(container, "1");
+        cl.show(container, "4");
 
         fp.jButton1.addActionListener(new ActionListener(){
 
