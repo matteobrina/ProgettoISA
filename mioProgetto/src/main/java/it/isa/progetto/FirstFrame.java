@@ -2,6 +2,7 @@ package it.isa.progetto;
 
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import java.awt.*;
@@ -16,6 +17,7 @@ public class FirstFrame extends JFrame {
     RegisterPanel rp = new RegisterPanel();
     MainPanel mp= new MainPanel();
     CardLayout cl = new CardLayout();
+    LoginPanelController lpc = new LoginPanelController();
     public FirstFrame()
     {
         super("Brinafy");
@@ -28,7 +30,7 @@ public class FirstFrame extends JFrame {
         container.add(rp, "3");
         container.add(mp, "4");
 
-        cl.show(container, "4");
+        cl.show(container, "1");
 
         fp.jButton1.addActionListener(new ActionListener(){
 
@@ -50,6 +52,27 @@ public class FirstFrame extends JFrame {
             
         });
 
+        lp.jButton1.addActionListener(new ActionListener(){
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try{
+                    lpc.login(lp.jTextField1.getText(), lp.jTextField2.getText());
+                    cl.show(container, "4");
+                }
+                catch(MissingObjectException ex)
+                {
+                    JOptionPane.showMessageDialog(lp, "L'utente non esiste!");
+                }
+
+                catch(WrongPasswordException ex)
+                {
+                    JOptionPane.showMessageDialog(lp, "Password Errata!");
+                }
+                
+            }
+            
+        });
 
         lp.jButton2.addActionListener(new ActionListener(){
 

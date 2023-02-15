@@ -76,7 +76,7 @@ public class LoginPanel extends javax.swing.JPanel {
      javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+     javax.swing.JTextField jTextField1;
+     javax.swing.JTextField jTextField2;
     // End of variables declaration                   
 }
