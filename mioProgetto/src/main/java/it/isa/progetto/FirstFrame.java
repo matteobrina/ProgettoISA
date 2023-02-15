@@ -18,6 +18,7 @@ public class FirstFrame extends JFrame {
     MainPanel mp= new MainPanel();
     CardLayout cl = new CardLayout();
     LoginPanelController lpc = new LoginPanelController();
+    RegisterPanelController rpc = new RegisterPanelController();
     public FirstFrame()
     {
         super("Brinafy");
@@ -80,6 +81,23 @@ public class FirstFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 cl.show(container, "1");
                 
+            }
+            
+        });
+
+        rp.jButton1.addActionListener(new ActionListener(){
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try{
+
+                rpc.register(rp.jTextField1.getText(), rp.jTextField2.getText());
+                cl.show(container, "1");
+                }
+                catch(DuplicatedObjectException ex)
+                {
+                    JOptionPane.showMessageDialog(lp, "L'utente esiste già!");
+                }
             }
             
         });

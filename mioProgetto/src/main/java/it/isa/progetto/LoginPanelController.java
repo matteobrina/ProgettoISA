@@ -7,11 +7,11 @@ public class LoginPanelController {
         Utente utente = new Utente();
         DAOFactory df = new DAOFactory();
         df.beginTransaction();
-        UtenteDAO dao = df.getUserDAO();
+        UtenteDAO dao = df.getUtenteDAO();
         utente = dao.findByUsername(username);
         df.commitTransaction();
         df.closeTransaction();
-        if(utente.getPassword() != password)
+        if(!(utente.getPassword().equals(password)) )
         throw new WrongPasswordException("Password errata!");
         else return utente;
 

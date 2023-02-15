@@ -56,12 +56,12 @@ public class DAOFactory {
   }
 
   
-  public UtenteDAO getUserDAO() {
+  public UtenteDAO getUtenteDAO() {
     return new UtenteDAO(connection);
   }
 
   
-  public BranoDAO getContactDAO() {
+  public BranoDAO getBranoDAO() {
     return new BranoDAO(connection);
   }
 }
