@@ -181,6 +181,41 @@ public List<Brano> findAllBrani() throws MissingObjectException
     return brani;
 }
 
+public int countAllBrani() throws MissingObjectException
+{
+    Statement st;
+    int i=0;
+
+    try{
+        String sql="SELECT COUNT(*) as N"
+                +" FROM Brano";
+
+        st= conn.createStatement();
+        ResultSet rs=st.executeQuery(sql);
+        
+        
+            while(rs.next())
+            {
+            i=rs.getInt("N");
+            }
+            
+
+            rs.close();
+            st.close();
+            
+        }
+    
+
+    
+
+    catch(SQLException e)
+    {
+        System.out.println(e.getMessage());
+    }
+
+    return i;
+}
+
 
 
 

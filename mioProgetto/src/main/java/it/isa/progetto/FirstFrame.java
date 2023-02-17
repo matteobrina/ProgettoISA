@@ -31,7 +31,7 @@ public class FirstFrame extends JFrame {
         container.add(rp, "3");
         container.add(mp, "4");
 
-        cl.show(container, "1");
+        cl.show(container, "4");
 
         fp.jButton1.addActionListener(new ActionListener(){
 
