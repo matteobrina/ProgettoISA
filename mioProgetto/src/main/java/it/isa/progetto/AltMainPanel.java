@@ -15,6 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTextField;
 import javax.swing.border.MatteBorder;
 
 /*
@@ -26,13 +27,13 @@ import javax.swing.border.MatteBorder;
  *
  * @author matteobrina
  */
-public class MainPanel extends javax.swing.JPanel implements ActionListener{
+public class AltMainPanel extends javax.swing.JPanel{
 
     /**
      * Creates new form NewJPanel3
      */
-    public MainPanel() {
-        initComponents();
+    public AltMainPanel(List<Brano> brani) {
+        initComponents(brani);
     }
     
     
@@ -44,7 +45,7 @@ public class MainPanel extends javax.swing.JPanel implements ActionListener{
      */
     
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
-    private void initComponents() {
+    private void initComponents(List<Brano> brani) {
 
         jTextField1 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -57,7 +58,7 @@ public class MainPanel extends javax.swing.JPanel implements ActionListener{
         jLabel1.setText("Cerca");
 
         jButton1.setText("Invio");
-        jButton1.addActionListener(this);
+        
 
         jButton2.setText("jButton2");
 
@@ -99,11 +100,11 @@ public class MainPanel extends javax.swing.JPanel implements ActionListener{
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        try{
+        
                 
-            List<Brano> brani = new ArrayList<Brano>();
-            brani = mpc.findAllBrani();
-            for(int i=0; i<mpc.contaAllSong(); i++)
+            
+            
+            for(int i=0; i<brani.size(); i++)
                 {
             
                     JPanel panel = new JPanel();
@@ -119,11 +120,7 @@ public class MainPanel extends javax.swing.JPanel implements ActionListener{
             validate();
             repaint();
             
-        }
-        catch (MissingObjectException ex) {
-            JOptionPane.showMessageDialog( this, "Nessun Brano!");
-            
-        } 
+       
     }// </editor-fold>                        
 
     public class TestPane extends JPanel {
@@ -160,39 +157,18 @@ public class MainPanel extends javax.swing.JPanel implements ActionListener{
         }
     }
 
-    @Override
-                public void actionPerformed(ActionEvent e) {
-                    if(e.getSource()==jButton1)
-                   
-                    {
-                        
-                        for(int i=0; i<10; i++)
-                        {
-                    JPanel panel = new JPanel();
-                    panel.add(new JButton("Hello"));
-                    panel.setBorder(new MatteBorder(0, 0, 1, 0, Color.GRAY));
-                    GridBagConstraints gbc = new GridBagConstraints();
-                    gbc.gridwidth = GridBagConstraints.REMAINDER;
-                    gbc.weightx = 1;
-                    gbc.fill = GridBagConstraints.HORIZONTAL;
-                    pannello.mainList.add(panel, gbc, 0);
-                        }
-
-                    validate();
-                    repaint();
-                    }
-                }
-                
+   
+   
                 
                 
     
 
     // Variables declaration - do not modify                     
-    private javax.swing.JButton jButton1;
+    javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
+    javax.swing.JTextField jTextField1;
     private TestPane pannello;
     private MainPanelController mpc;
     // End of variables declaration                   

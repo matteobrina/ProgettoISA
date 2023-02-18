@@ -9,16 +9,22 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+
 public class FirstFrame extends JFrame {
 
-    JPanel container = new JPanel();
-    FirstPanel fp = new FirstPanel();
-    LoginPanel lp = new LoginPanel();
-    RegisterPanel rp = new RegisterPanel();
-    MainPanel mp= new MainPanel();
-    CardLayout cl = new CardLayout();
-    LoginPanelController lpc = new LoginPanelController();
-    RegisterPanelController rpc = new RegisterPanelController();
+    private JPanel container = new JPanel();
+    private FirstPanel fp = new FirstPanel();
+    private LoginPanel lp = new LoginPanel();
+    private RegisterPanel rp = new RegisterPanel();
+    private CardLayout cl = new CardLayout();
+    private LoginPanelController lpc = new LoginPanelController();
+    private RegisterPanelController rpc = new RegisterPanelController();
+    private MainPanelController mpc = new MainPanelController();
+    
+
+    private AltMainPanel amp = new AltMainPanel(mpc.findAllBrani());
+
+
     public FirstFrame()
     {
         super("Brinafy");
@@ -29,9 +35,9 @@ public class FirstFrame extends JFrame {
         container.add(fp, "1");
         container.add(lp, "2");
         container.add(rp, "3");
-        container.add(mp, "4");
-
-        cl.show(container, "4");
+        container.add(amp, "6");
+        
+        cl.show(container, "6");
 
         fp.jButton1.addActionListener(new ActionListener(){
 
@@ -111,6 +117,49 @@ public class FirstFrame extends JFrame {
             }
             
         });
+
+        
+
+
+        amp.jButton1.addActionListener(new ActionListener(){
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+               try{ 
+               
+               amp = new AltMainPanel(mpc.findByString(amp.jTextField1.getText()));
+               amp.jButton1.addActionListener(this);
+               container.add(amp, "6");
+
+               cl.show(container, "6");
+
+
+               }
+
+               catch(MissingObjectException ex){
+
+                JOptionPane.showMessageDialog( amp, "Nessun Brano!");
+
+               }
+              
+                
+                    
+
+                   
+                    
+
+                 
+                 
+            }
+            
+            
+            
+        });
+
+
+        
+
+
 
         
 

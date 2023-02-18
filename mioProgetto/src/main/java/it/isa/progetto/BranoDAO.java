@@ -134,7 +134,7 @@ public List<Brano> findByString(String stringa) throws MissingObjectException
 }
 
 
-public List<Brano> findAllBrani() throws MissingObjectException
+public List<Brano> findAllBrani() 
 {
     Statement st;
     List <Brano> brani = new ArrayList<Brano>();

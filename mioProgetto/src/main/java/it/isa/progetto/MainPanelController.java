@@ -16,13 +16,25 @@ public class MainPanelController {
         return count;
     }
 
-    public List<Brano> findAllBrani() throws MissingObjectException
+    public List<Brano> findAllBrani() 
     {
         DAOFactory dao = new DAOFactory();
         List<Brano> brani = new ArrayList<Brano>();
         dao.beginTransaction();
         BranoDAO branoDao = dao.getBranoDAO();
         brani  = branoDao.findAllBrani();
+        dao.commitTransaction();
+        dao.closeTransaction();
+        return brani;
+    }
+
+    public List<Brano> findByString(String stringa) throws MissingObjectException
+    {
+        DAOFactory dao = new DAOFactory();
+        List<Brano> brani = new ArrayList<Brano>();
+        dao.beginTransaction();
+        BranoDAO branoDao = dao.getBranoDAO();
+        brani  = branoDao.findByString(stringa);
         dao.commitTransaction();
         dao.closeTransaction();
         return brani;
