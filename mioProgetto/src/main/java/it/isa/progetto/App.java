@@ -1,9 +1,7 @@
 package it.isa.progetto;
 
-
-
-
-
+import javafx.application.Application;
+import javafx.application.Platform;
 
 public class App 
 {
@@ -11,6 +9,9 @@ public class App
     {
 
         new FirstFrame();
+        
+        
+        
 
         
      }

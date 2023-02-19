@@ -1,7 +1,13 @@
 package it.isa.progetto;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+
+import javafx.application.Platform;
+import javafx.embed.swing.JFXPanel;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
 public class MainPanelController {
 
@@ -39,5 +45,12 @@ public class MainPanelController {
         dao.closeTransaction();
         return brani;
     }
+
+    public String makeButtonText(Brano brano)
+    {
+        return ("Titolo: "+brano.getTitolo()+"\t Album: "+brano.getAlbum()+"\t Artista: "+brano.getArtista()+"\t Ascolti: "+brano.getAscolti());
+    }
+
+    
     
 }

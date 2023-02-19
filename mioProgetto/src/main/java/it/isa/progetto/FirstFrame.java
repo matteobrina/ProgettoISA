@@ -65,7 +65,7 @@ public class FirstFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 try{
                     lpc.login(lp.jTextField1.getText(), lp.jTextField2.getText());
-                    cl.show(container, "4");
+                    cl.show(container, "6");
                 }
                 catch(MissingObjectException ex)
                 {

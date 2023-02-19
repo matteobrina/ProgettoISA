@@ -7,6 +7,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +19,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.border.MatteBorder;
 
+import javafx.scene.media.AudioClip;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
@@ -27,7 +30,7 @@ import javax.swing.border.MatteBorder;
  *
  * @author matteobrina
  */
-public class AltMainPanel extends javax.swing.JPanel{
+public class AltMainPanel extends javax.swing.JPanel implements ActionListener{
 
     /**
      * Creates new form NewJPanel3
@@ -108,7 +111,10 @@ public class AltMainPanel extends javax.swing.JPanel{
                 {
             
                     JPanel panel = new JPanel();
-                    panel.add(new JButton(brani.get(i).getTitolo()));
+                    JButton button = new JButton(mpc.makeButtonText(brani.get(i)));
+                    button.setName(Integer.toString(brani.get(i).getId()));
+                    panel.add(button);
+                    button.addActionListener(this);
                     panel.setBorder(new MatteBorder(0, 0, 1, 0, Color.GRAY));
                     GridBagConstraints gbc = new GridBagConstraints();
                     gbc.gridwidth = GridBagConstraints.REMAINDER;
@@ -157,6 +163,14 @@ public class AltMainPanel extends javax.swing.JPanel{
         }
     }
 
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        System.out.println(((JButton)e.getSource()).getName());
+        sound = new AudioClip(Paths.get("l.mp3").toUri().toString());
+        sound.stop();
+        
+    }
+
    
    
                 
@@ -171,5 +185,6 @@ public class AltMainPanel extends javax.swing.JPanel{
     javax.swing.JTextField jTextField1;
     private TestPane pannello;
     private MainPanelController mpc;
+    private AudioClip sound;
     // End of variables declaration                   
 }
