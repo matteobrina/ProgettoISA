@@ -8,6 +8,8 @@ import javax.swing.JPanel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
 
 
 public class FirstFrame extends JFrame {
@@ -20,6 +22,9 @@ public class FirstFrame extends JFrame {
     private LoginPanelController lpc = new LoginPanelController();
     private RegisterPanelController rpc = new RegisterPanelController();
     private MainPanelController mpc = new MainPanelController();
+    private String username="";
+    private MainPanel mp = new MainPanel(mpc.findAllBrani(), username);
+    
     
 
     private AltMainPanel amp = new AltMainPanel(mpc.findAllBrani());
@@ -27,7 +32,19 @@ public class FirstFrame extends JFrame {
 
     public FirstFrame()
     {
+
+        
+    
         super("Brinafy");
+        File file = new File("songs/l.mp3");
+        try
+        {
+            file.createNewFile();
+        }
+        catch(IOException ex)
+        {
+            JOptionPane.showMessageDialog( fp, "Errore!");
+        }
 
         
         container.setLayout(cl);
@@ -36,8 +53,9 @@ public class FirstFrame extends JFrame {
         container.add(lp, "2");
         container.add(rp, "3");
         container.add(amp, "6");
+        container.add(mp, "7");
         
-        cl.show(container, "6");
+        cl.show(container, "1");
 
         fp.jButton1.addActionListener(new ActionListener(){
 
@@ -64,8 +82,47 @@ public class FirstFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try{
-                    lpc.login(lp.jTextField1.getText(), lp.jTextField2.getText());
-                    cl.show(container, "6");
+                    Utente utente = lpc.login(lp.jTextField1.getText(), lp.jTextField2.getText());
+                    username = utente.getUsername();
+                    mp= new MainPanel(mpc.findAllBrani(), username);
+                    mp.jButton1.addActionListener(new ActionListener(){
+
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                           try{ 
+                           
+                           mp = new MainPanel((mpc.findByString(mp.jTextField1.getText())), username);
+                           mp.jButton1.addActionListener(this);
+                           container.add(mp, "7");
+            
+                           cl.show(container, "7");
+            
+            
+                           }
+            
+                           catch(MissingObjectException ex){
+            
+                            JOptionPane.showMessageDialog( mp, "Nessun Brano!");
+            
+                           }
+                          
+                            
+                                
+            
+                               
+                                
+            
+                             
+                             
+                        }
+                        
+                        
+                        
+                    });
+
+
+                    container.add(mp, "7");
+                    cl.show(container, "7");
                 }
                 catch(MissingObjectException ex)
                 {
@@ -156,7 +213,53 @@ public class FirstFrame extends JFrame {
             
         });
 
+        
 
+        mp.jButton1.addActionListener(new ActionListener(){
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+               try{ 
+               
+               mp = new MainPanel((mpc.findByString(mp.jTextField1.getText())), username);
+               mp.jButton1.addActionListener(this);
+               container.add(mp, "7");
+
+               cl.show(container, "7");
+
+
+               }
+
+               catch(MissingObjectException ex){
+
+                JOptionPane.showMessageDialog( mp, "Nessun Brano!");
+
+               }
+              
+                
+                    
+
+                   
+                    
+
+                 
+                 
+            }
+            
+            
+            
+        });
+
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+
+                
+                file.delete();
+                
+                }
+                
+            });
         
 
 
