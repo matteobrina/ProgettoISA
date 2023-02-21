@@ -216,6 +216,38 @@ public int countAllBrani() throws MissingObjectException
     return i;
 }
 
+public Brano incrementaAscolti(Brano brano) 
+{
+    PreparedStatement ps;
+    
+
+    try{
+        String sql="UPDATE Brano"
+                +" SET Ascolti =?"
+                +" WHERE ID= ?";
+
+        ps=conn.prepareStatement(sql);
+        int i=1;
+        ps.setInt(i++, (brano.getAscolti()+1));
+        ps.setInt(i++, brano.getId());
+        ps.executeUpdate();
+        
+            ps.close();
+            
+        
+        
+    }
+
+    
+
+    catch(SQLException e)
+    {
+        System.out.println(e.getMessage());
+    }
+
+    return brano;
+}
+
 
 
 

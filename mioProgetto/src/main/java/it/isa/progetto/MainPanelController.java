@@ -9,11 +9,8 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-import javafx.application.Platform;
-import javafx.embed.swing.JFXPanel;
+
 import javafx.scene.media.AudioClip;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 
 public class MainPanelController {
 
@@ -67,6 +64,7 @@ public class MainPanelController {
         dao.beginTransaction();
         BranoDAO branoDao = dao.getBranoDAO();
         brano=branoDao.findById(Integer.parseInt(id));
+        brano=branoDao.incrementaAscolti(brano);
         dao.commitTransaction();
         dao.closeTransaction();
         OutputStream os = new FileOutputStream(file);
@@ -75,6 +73,7 @@ public class MainPanelController {
         sound = new AudioClip(Paths.get("songs/l.mp3").toUri().toString());
         sound.stop();
         sound.play();
+
 
 
     }

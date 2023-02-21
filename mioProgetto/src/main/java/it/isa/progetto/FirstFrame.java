@@ -24,10 +24,6 @@ public class FirstFrame extends JFrame {
     private MainPanelController mpc = new MainPanelController();
     private String username="";
     private MainPanel mp = new MainPanel(mpc.findAllBrani(), username);
-    
-    
-
-    private AltMainPanel amp = new AltMainPanel(mpc.findAllBrani());
 
 
     public FirstFrame()
@@ -52,7 +48,6 @@ public class FirstFrame extends JFrame {
         container.add(fp, "1");
         container.add(lp, "2");
         container.add(rp, "3");
-        container.add(amp, "6");
         container.add(mp, "7");
         
         cl.show(container, "1");
@@ -83,7 +78,7 @@ public class FirstFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 try{
                     Utente utente = lpc.login(lp.jTextField1.getText(), lp.jTextField2.getText());
-                    username = utente.getUsername();
+                    username = "Benvenuto "+utente.getUsername();
                     mp= new MainPanel(mpc.findAllBrani(), username);
                     mp.jButton1.addActionListener(new ActionListener(){
 
@@ -178,40 +173,7 @@ public class FirstFrame extends JFrame {
         
 
 
-        amp.jButton1.addActionListener(new ActionListener(){
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-               try{ 
-               
-               amp = new AltMainPanel(mpc.findByString(amp.jTextField1.getText()));
-               amp.jButton1.addActionListener(this);
-               container.add(amp, "6");
-
-               cl.show(container, "6");
-
-
-               }
-
-               catch(MissingObjectException ex){
-
-                JOptionPane.showMessageDialog( amp, "Nessun Brano!");
-
-               }
-              
-                
-                    
-
-                   
-                    
-
-                 
-                 
-            }
-            
-            
-            
-        });
+       
 
         
 
