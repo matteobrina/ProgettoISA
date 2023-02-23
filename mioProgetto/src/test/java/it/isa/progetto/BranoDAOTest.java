@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
+import java.sql.PreparedStatement;
 
 public class BranoDAOTest {
 
@@ -152,5 +153,179 @@ public class BranoDAOTest {
         }
     }
 
+
+@Test
+public void findAllBraniSQLExceptionTest()
+{
+    try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/PROGETTO", "root", "Internazionale99");
+            BranoDAO dao = new BranoDAO(con);
+            con.close();
+            dao.findAllBrani();
+        }
+
+        catch(Exception ex)
+        {
+            System.out.println(ex.getMessage());
+        }
+}
+
+@Test
+public void countAllBraniTest()
+{
+    try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/PROGETTO", "root", "Internazionale99");
+            BranoDAO dao = new BranoDAO(con);
+            int a = dao.countAllBrani();
+            int c = ((dao.findAllBrani()).size());
+            Statement st;
+            String sql= "SELECT COUNT(*) as N"
+                        +" FROM Brano";
+
+            st=con.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            rs.next();
+            int b=rs.getInt("N");
+            rs.close();
+            con.close();
+            assertEquals(a, b, c);
+        }
+
+        catch(Exception ex)
+        {
+            System.out.println(ex.getMessage());
+        }
+
+
     
+}
+
+@Test
+public void countAllBraniSQLExceptionTest()
+{
+    try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/PROGETTO", "root", "Internazionale99");
+            BranoDAO dao = new BranoDAO(con);
+            con.close();
+            dao.countAllBrani();
+
+    }
+
+    catch(Exception ex)
+    {
+        System.out.println(ex.getMessage());
+    }
+
+}
+
+@Test
+public void incrementaAscoltiTest()
+{
+     try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/PROGETTO", "root", "Internazionale99");
+            BranoDAO dao = new BranoDAO(con);
+            Brano brano = dao.findById(1);
+            int a = brano.getAscolti()+1;
+            brano=dao.incrementaAscolti(brano);
+           int b = brano.getAscolti();
+            assertEquals(a, b);
+
+    }
+
+    catch(Exception ex)
+    {
+        System.out.println(ex.getMessage());
+    }
+
+    finally
+    {
+        try{
+            PreparedStatement ps;
+        Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/PROGETTO", "root", "Internazionale99");
+            BranoDAO dao = new BranoDAO(con);
+            
+                Brano brano = dao.findById(1);
+        String sql="UPDATE Brano"
+                +" SET Ascolti =?"
+                +" WHERE ID= ?";
+
+        ps=con.prepareStatement(sql);
+        int i=1;
+        ps.setInt(i++, (brano.getAscolti()-1));
+        ps.setInt(i++, brano.getId());
+        ps.executeUpdate();
+        
+            ps.close();
+            
+        
+        
+    }
+
+    catch(Exception ex)
+    {
+        System.out.println(ex.getMessage());
+    }
+    } 
+}
+
+@Test
+public void FindByIdSQLExceptionTest()
+{
+    try{
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/PROGETTO", "root", "Internazionale99");
+        BranoDAO dao = new BranoDAO(con);
+        con.close();
+        dao.findById(1);
+    }
+
+    catch(Exception ex)
+    {
+        System.out.println(ex.getMessage());
+    }
+
+}
+
+@Test
+public void FindByStringSQLExceptionTest()
+{
+    try{
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/PROGETTO", "root", "Internazionale99");
+        BranoDAO dao = new BranoDAO(con);
+        con.close();
+        dao.findByString("dark");
+    }
+
+    catch(Exception ex)
+    {
+        System.out.println(ex.getMessage());
+    }
+
+}
+
+@Test
+public void incrementaAscoltiSQLExceptionTest()
+{
+    try{
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/PROGETTO", "root", "Internazionale99");
+        BranoDAO dao = new BranoDAO(con);
+        con.close();
+        dao.incrementaAscolti(new Brano());
+    }
+
+    catch(Exception ex)
+    {
+        System.out.println(ex.getMessage());
+    }
+
+}
+
+
 }

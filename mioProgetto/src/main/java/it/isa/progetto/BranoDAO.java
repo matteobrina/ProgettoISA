@@ -231,8 +231,10 @@ public Brano incrementaAscolti(Brano brano)
         ps.setInt(i++, (brano.getAscolti()+1));
         ps.setInt(i++, brano.getId());
         ps.executeUpdate();
+
         
             ps.close();
+            brano.setAscolti(brano.getAscolti()+1);
             
         
         
