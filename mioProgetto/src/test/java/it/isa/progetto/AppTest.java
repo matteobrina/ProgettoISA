@@ -1,6 +1,6 @@
 package it.isa.progetto;
 
-import static org.junit.Assert.assertTrue;
+
 
 import org.junit.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -24,7 +24,9 @@ public class AppTest
     @Test
     public void shouldAnswerWithTrue()
     {
-        assertTrue( true );
+        new App();
+        String[] args = new String[1];
+        App.main(args);
     }
 
 
