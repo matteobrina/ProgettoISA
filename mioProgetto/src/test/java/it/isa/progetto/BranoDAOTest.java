@@ -1,5 +1,6 @@
 package it.isa.progetto;
 
+import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -68,7 +69,8 @@ public class BranoDAOTest {
                 Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/PROGETTO", "root", "Internazionale99");
 
                 BranoDAO dao = new BranoDAO(con);
-                dao.findById(0);
+                
+                assertThrows(MissingObjectException.class, () -> {dao.findById(0);});
 
         }
 
@@ -112,7 +114,9 @@ public class BranoDAOTest {
 
                 
                 BranoDAO dao = new BranoDAO(con);
-                dao.findByString("xxxxxxxxxxxxxxx");
+                
+                assertThrows(MissingObjectException.class, () -> {dao.findByString("xxxxxxxxxxxxxxx");});
+                
                 
                 
         }

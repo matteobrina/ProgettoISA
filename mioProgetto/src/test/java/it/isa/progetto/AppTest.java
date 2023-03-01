@@ -22,7 +22,7 @@ public class AppTest
 
 
     @Test
-    public void shouldAnswerWithTrue()
+    public void appTest()
     {
         new App();
         String[] args = new String[1];

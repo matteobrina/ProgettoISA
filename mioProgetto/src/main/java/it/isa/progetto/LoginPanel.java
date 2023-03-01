@@ -1,6 +1,6 @@
 package it.isa.progetto;
 
-import javax.swing.JPasswordField;
+
 
 public class LoginPanel extends javax.swing.JPanel {
 

@@ -77,7 +77,7 @@ public class FirstFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try{
-                    Utente utente = lpc.login(lp.jTextField1.getText(), lp.jTextField2.getText());
+                    Utente utente = lpc.login(lp.jTextField1.getText(), String.valueOf(lp.jTextField2.getPassword()));
                     JOptionPane.showMessageDialog(lp, "Login avvenuto con successo!");
                     username = "Benvenuto "+utente.getUsername();
                     mp= new MainPanel(mpc.findAllBrani(), username);
@@ -150,7 +150,7 @@ public class FirstFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 try{
 
-                rpc.register(rp.jTextField1.getText(), rp.jTextField2.getText());
+                rpc.register(rp.jTextField1.getText(), String.valueOf(rp.jTextField2.getPassword()));
                 JOptionPane.showMessageDialog(lp, "Registrazione avvenuta con successo!");
                 cl.show(container, "1");
                 }

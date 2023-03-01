@@ -1,12 +1,14 @@
 package it.isa.progetto;
 
 import static org.junit.Assert.assertEquals;
-
+import static org.junit.Assert.assertThrows;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 
 import org.junit.Test;
+
+
 
 
 
@@ -69,7 +71,8 @@ public class UtenteDAOTest {
             UtenteDAO dao = new UtenteDAO(con);
         
        dao.create("prova", "prova");
-       dao.create("prova", "prova");
+       assertThrows(DuplicatedObjectException.class, () -> {dao.create("prova", "prova");});
+       
        
 
        
@@ -132,7 +135,8 @@ public void testFindByIDNotFoundException()
         Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/PROGETTO", "root", "Internazionale99");
 
         UtenteDAO dao = new UtenteDAO(con);
-        dao.findById(0);
+        
+        assertThrows(MissingObjectException.class, () -> {dao.findById(0);});
         
     }
 
@@ -149,7 +153,9 @@ public void testFindByUsernameNotFoundException()
             Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/PROGETTO", "root", "Internazionale99");
             UtenteDAO dao = new UtenteDAO(con);
         
-        dao.findByUsername("0");
+        
+        assertThrows(MissingObjectException.class, () -> {dao.findByUsername("0");});
+        
        
     }
 
@@ -190,7 +196,8 @@ public void testDeleteUtenteNotFoundException()
             UtenteDAO dao = new UtenteDAO(con);
         Utente utente = new Utente();
         utente.setUsername("0");
-        dao.deleteUtente(utente);
+
+        assertThrows(MissingObjectException.class, () -> {dao.deleteUtente(utente);});
        
     }
 
