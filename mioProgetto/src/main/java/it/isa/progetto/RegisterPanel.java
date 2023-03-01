@@ -14,7 +14,7 @@ public class RegisterPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -77,6 +77,6 @@ public class RegisterPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
      javax.swing.JTextField jTextField1;
-     javax.swing.JTextField jTextField2;
+     javax.swing.JPasswordField jTextField2;
     // End of variables declaration                   
 }

@@ -78,6 +78,7 @@ public class FirstFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 try{
                     Utente utente = lpc.login(lp.jTextField1.getText(), lp.jTextField2.getText());
+                    JOptionPane.showMessageDialog(lp, "Login avvenuto con successo!");
                     username = "Benvenuto "+utente.getUsername();
                     mp= new MainPanel(mpc.findAllBrani(), username);
                     mp.jButton1.addActionListener(new ActionListener(){
@@ -150,6 +151,7 @@ public class FirstFrame extends JFrame {
                 try{
 
                 rpc.register(rp.jTextField1.getText(), rp.jTextField2.getText());
+                JOptionPane.showMessageDialog(lp, "Registrazione avvenuta con successo!");
                 cl.show(container, "1");
                 }
                 catch(DuplicatedObjectException ex)
