@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.util.List;
 
 import javax.swing.JButton;
+
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -55,6 +56,8 @@ public class MainPanel extends javax.swing.JPanel implements ActionListener{
         jLabel1.setText("Cerca");
 
         jButton1.setText("Invio");
+        jButton1.setName("Invio1");
+        jTextField1.setName("Cerca1");
         
 
         
@@ -73,6 +76,7 @@ public class MainPanel extends javax.swing.JPanel implements ActionListener{
         jLabel2.setText(nome);
 
         jButton3.setText("STOP");
+        jButton3.setName("STOP1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

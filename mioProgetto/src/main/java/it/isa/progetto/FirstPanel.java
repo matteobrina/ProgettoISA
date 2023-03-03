@@ -22,8 +22,10 @@ public class FirstPanel extends JPanel {
         setPreferredSize(new java.awt.Dimension(400, 300));
 
         jButton1.setText("Login");
+        jButton1.setName("Login1");
 
         jButton2.setText("Registrati");
+        jButton2.setName("Registrati1");
 
         
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

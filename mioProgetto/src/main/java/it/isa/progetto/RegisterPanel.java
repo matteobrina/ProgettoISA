@@ -27,7 +27,12 @@ public class RegisterPanel extends javax.swing.JPanel {
         
         
         jButton1.setText("Conferma");
+        jButton1.setName("Conferma2");
         jButton2.setText("Indietro");
+        jButton2.setName("Indietro2");
+        jTextField1.setName("Username1");
+        jTextField2.setName("Password1");
+
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

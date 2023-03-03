@@ -7,13 +7,20 @@ public class App
     public static void main( String[] args )
     {
 
-        new FirstFrame();
+        
+        App.showFrame();
         
         
         
 
         
      }
+
+     public static FirstFrame showFrame()
+        {
+            FirstFrame firstFrame = new FirstFrame();
+            return firstFrame;
+        }
    
  }
 

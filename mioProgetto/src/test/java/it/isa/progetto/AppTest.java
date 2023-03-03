@@ -27,6 +27,7 @@ public class AppTest
         new App();
         String[] args = new String[1];
         App.main(args);
+        
     }
 
 
