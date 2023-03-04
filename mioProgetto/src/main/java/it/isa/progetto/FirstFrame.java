@@ -179,40 +179,7 @@ public class FirstFrame extends JFrame {
 
         
 
-        mp.jButton1.addActionListener(new ActionListener(){
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-               try{ 
-               
-               mp = new MainPanel((mpc.findByString(mp.jTextField1.getText())), username);
-               mp.jButton1.addActionListener(this);
-               container.add(mp, "7");
-
-               cl.show(container, "7");
-
-
-               }
-
-               catch(MissingObjectException ex){
-
-                JOptionPane.showMessageDialog( mp, "Nessun Brano!");
-
-               }
-              
-                
-                    
-
-                   
-                    
-
-                 
-                 
-            }
-            
-            
-            
-        });
+        
 
         addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
