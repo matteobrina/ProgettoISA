@@ -37,6 +37,7 @@ public class FirstFrame extends JFrame {
         
         
         
+        
 
         
         container.setLayout(cl);
@@ -77,14 +78,21 @@ public class FirstFrame extends JFrame {
                     JOptionPane.showMessageDialog(lp, "Login avvenuto con successo!");
                     username = "Benvenuto "+utente.getUsername();
                     mp= new MainPanel(mpc.findAllBrani(), username);
+                
                     mp.jButton1.addActionListener(new ActionListener(){
 
                         @Override
                         public void actionPerformed(ActionEvent e) {
                            try{ 
+
+                            if (mp.jButton3.isEnabled())
+                            mpc.stop();
                            
                            mp = new MainPanel((mpc.findByString(mp.jTextField1.getText())), username);
                            mp.jButton1.addActionListener(this);
+                           
+                           
+                           
                            container.add(mp, "7");
             
                            cl.show(container, "7");

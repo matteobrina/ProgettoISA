@@ -77,6 +77,8 @@ public class MainPanel extends javax.swing.JPanel implements ActionListener{
 
         jButton3.setText("STOP");
         jButton3.setName("STOP1");
+        jButton3.setEnabled(false);
+        
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -124,6 +126,8 @@ public class MainPanel extends javax.swing.JPanel implements ActionListener{
             @Override
             public void actionPerformed(ActionEvent e) {
                mpc.stop();
+               jButton3.setEnabled(false);
+               
                 
             }
             
@@ -190,6 +194,7 @@ public class MainPanel extends javax.swing.JPanel implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         
         mpc.play(((JButton)e.getSource()).getName());
+        jButton3.setEnabled(true);
         
         
         
@@ -207,7 +212,7 @@ public class MainPanel extends javax.swing.JPanel implements ActionListener{
     // Variables declaration - do not modify                     
     javax.swing.JButton jButton1;
     
-    private javax.swing.JButton jButton3;
+    javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;

@@ -82,7 +82,8 @@ public List<Brano> findByString(String stringa) throws MissingObjectException
                 +" WHERE ( INSTR(Titolo,?)>0"
                 +" OR  INSTR(Album,?)>0"
                 +" OR  INSTR(Artista,?)>0"
-                +" OR  INSTR(Album,?)>0 )";
+                +" OR  INSTR(Album,?)>0 )"
+                +" ORDER BY ID DESC";
 
         ps=conn.prepareStatement(sql);
         int i=1;
@@ -142,7 +143,8 @@ public List<Brano> findAllBrani()
 
     try{
         String sql="SELECT *"
-                +" FROM Brano";
+                +" FROM Brano"
+                +" ORDER BY ID DESC";
 
         st= conn.createStatement();
         ResultSet rs=st.executeQuery(sql);
