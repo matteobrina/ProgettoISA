@@ -86,6 +86,8 @@ public class MainWindowTest extends AbstractUiTest {
         this.song.requireVisible().requireEnabled().click();
         this.stop = this.frame.button(JButtonMatcher .withName("STOP1").andShowing());
         this.stop.requireVisible().requireEnabled().click();
+        this.song = this.frame.button(JButtonMatcher .withName("2").andShowing());
+        this.song.requireVisible().requireEnabled().click();
         this.cerca1=this.frame.textBox(JTextComponentMatcher.withName("Cerca1").andShowing());
         this.invio1 = this.frame.button(JButtonMatcher .withName("Invio1").andShowing());
         this.cerca1.enterText("hhhhhhhhh");
