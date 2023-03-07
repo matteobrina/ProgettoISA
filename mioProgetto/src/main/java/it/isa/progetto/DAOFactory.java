@@ -2,7 +2,7 @@ package it.isa.progetto;
 
 import java.sql.DriverManager;
 import java.sql.Connection;
-import java.sql.SQLException;
+
 
 public class DAOFactory {
 
@@ -19,10 +19,10 @@ public class DAOFactory {
       Class.forName(Configuration.DATABASE_DRIVER);
       this.connection = DriverManager.getConnection(Configuration.DATABASE_URL);
       this.connection.setAutoCommit(false);
-    } catch (ClassNotFoundException e) {
-      throw new RuntimeException(e);
-    } catch (SQLException e) {
-      throw new RuntimeException(e);
+    }
+    catch(Exception ex)
+    {
+      System.out.println(ex.getMessage());
     }
 
   }
@@ -31,7 +31,7 @@ public class DAOFactory {
   public void commitTransaction() {
     try {
       this.connection.commit();
-    } catch (SQLException e) {
+    } catch (Exception e) {
       throw new RuntimeException(e);
     }
   }
@@ -41,7 +41,7 @@ public class DAOFactory {
 
     try {
       this.connection.rollback();
-    } catch (SQLException e) {
+    } catch (Exception e) {
       throw new RuntimeException(e);
     }
 
@@ -50,7 +50,7 @@ public class DAOFactory {
   public void closeTransaction() {
     try {
       this.connection.close();
-    } catch (SQLException e) {
+    } catch (Exception e) {
       throw new RuntimeException(e);
     }
   }

@@ -13,6 +13,8 @@ import org.junit.BeforeClass;
 import java.awt.Dimension;
 import java.awt.GraphicsEnvironment;
 
+import javax.swing.JFrame;
+
 public class AbstractUiTest extends AssertJSwingTestCaseTemplate {
 
     /**
@@ -46,7 +48,9 @@ public class AbstractUiTest extends AssertJSwingTestCaseTemplate {
 
             @Override
             protected FirstFrame executeInEDT() throws Exception {
-                return App.showFrame();
+            FirstFrame frame= App.showFrame();
+            frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+            return frame;
             }
         });
         this.frame = new FrameFixture(this.robot(), mainWindow);

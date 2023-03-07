@@ -71,6 +71,22 @@ public class MainPanelControllerTest{
     }
 
     @Test
+    public void playExceptionTest()
+    {
+        MainPanelController mpc = new MainPanelController();
+        try
+        {
+            File file = new File("songs/l.mp3");
+            mpc.play("0");
+            file.delete();
+        }
+        catch(Exception ex)
+        {
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    @Test
     public void stopTest()
     {
         MainPanelController mpc = new MainPanelController();

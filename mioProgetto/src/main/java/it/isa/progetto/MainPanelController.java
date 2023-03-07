@@ -1,9 +1,9 @@
 package it.isa.progetto;
 
 import java.io.File;
-import java.io.FileNotFoundException;
+
 import java.io.FileOutputStream;
-import java.io.IOException;
+
 import java.io.OutputStream;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -55,7 +55,7 @@ public class MainPanelController {
         return ("Titolo: "+brano.getTitolo()+"\t Album: "+brano.getAlbum()+"\t Artista: "+brano.getArtista()+"\t Ascolti: "+brano.getAscolti());
     }
 
-    public void play(String id) throws MissingObjectException, FileNotFoundException, IOException
+    public void play(String id) 
     {
         final AudioClip sound;
         final String FILEPATH = "songs/l.mp3";
@@ -64,6 +64,7 @@ public class MainPanelController {
         DAOFactory dao = new DAOFactory();
         dao.beginTransaction();
         BranoDAO branoDao = dao.getBranoDAO();
+        try{
         brano=branoDao.findById(Integer.parseInt(id));
         brano=branoDao.incrementaAscolti(brano);
         dao.commitTransaction();
@@ -71,9 +72,15 @@ public class MainPanelController {
         OutputStream os = new FileOutputStream(file);
         os.write(brano.getCanzone());
         os.close();
+        
         sound = new AudioClip(Paths.get("songs/l.mp3").toUri().toString());
         sound.stop();
         sound.play();
+        }
+        catch(Exception ex)
+        {
+           System.out.println(ex.getMessage());
+        }
 
 
 

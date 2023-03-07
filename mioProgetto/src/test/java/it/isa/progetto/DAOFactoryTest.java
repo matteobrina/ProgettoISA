@@ -55,5 +55,50 @@ public class DAOFactoryTest {
        }
 
     }
+
+    @Test
+    public void commitExceptionTest()
+    {
+        DAOFactory dao = new DAOFactory();
+        try{
+        dao.commitTransaction();
+        
+        }
+        catch(Exception ex)
+        {
+            System.out.println(ex.getMessage());
+        }
+
+    }
+
+    @Test
+    public void rollbackExceptionTest()
+    {
+        DAOFactory dao = new DAOFactory();
+        try{
+        dao.rollbackTransaction();
+        
+        }
+        catch(Exception ex)
+        {
+            System.out.println(ex.getMessage());
+        }
+
+    }
+
+    @Test
+    public void closeExceptionTest()
+    {
+        DAOFactory dao = new DAOFactory();
+        try{
+        dao.closeTransaction();
+        
+        }
+        catch(Exception ex)
+        {
+            System.out.println(ex.getMessage());
+        }
+
+    }
     
 }

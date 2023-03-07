@@ -9,7 +9,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.io.IOException;
+
 
 
 public class FirstFrame extends JFrame {
@@ -26,21 +26,17 @@ public class FirstFrame extends JFrame {
     private MainPanel mp = new MainPanel(mpc.findAllBrani(), username);
 
 
-    public FirstFrame()
+    public FirstFrame() 
     {
 
         
     
         super("Brinafy");
         File file = new File("songs/l.mp3");
-        try
-        {
-            file.createNewFile();
-        }
-        catch(IOException ex)
-        {
-            JOptionPane.showMessageDialog( fp, "Errore!");
-        }
+        
+        
+        
+        
 
         
         container.setLayout(cl);

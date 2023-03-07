@@ -98,6 +98,7 @@ public class MainWindowTest extends AbstractUiTest {
         this.song.requireVisible().requireEnabled().click();
         this.stop = this.frame.button(JButtonMatcher .withName("STOP1").andShowing());
         this.stop.requireVisible().requireEnabled().click();
+        this.frame.close();
 
 
 

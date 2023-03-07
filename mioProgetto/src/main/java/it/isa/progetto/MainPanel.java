@@ -11,7 +11,7 @@ import java.util.List;
 
 import javax.swing.JButton;
 
-import javax.swing.JOptionPane;
+
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.MatteBorder;
@@ -188,13 +188,10 @@ public class MainPanel extends javax.swing.JPanel implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        try{
+        
         mpc.play(((JButton)e.getSource()).getName());
-        }
-        catch(Exception ex)
-        {
-            JOptionPane.showMessageDialog( this, "Nessun Brano!");
-        }
+        
+        
         
         
     }
