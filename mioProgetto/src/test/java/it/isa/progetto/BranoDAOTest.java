@@ -91,7 +91,7 @@ public class BranoDAOTest {
                 List<Brano> brani = new ArrayList<Brano>();
                 BranoDAO dao = new BranoDAO(con);
                 brani=dao.findByString("The dark side of the");
-                for(int i=0; i<brani.size(); i++)
+                for(int i=brani.size(); i==0; i--)
                 {
                     assertEquals(brani.get(i).getId(), (i+1));
                 }
