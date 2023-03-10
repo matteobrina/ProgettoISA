@@ -22,8 +22,9 @@ public class FirstFrame extends JFrame {
     private LoginPanelController lpc = new LoginPanelController();
     private RegisterPanelController rpc = new RegisterPanelController();
     private MainPanelController mpc = new MainPanelController();
-    private String username="";
-    private MainPanel mp = new MainPanel(mpc.findAllBrani(), username);
+    private Utente utente = new Utente();
+    utente.setUsername(" ");
+    private MainPanel mp = new MainPanel(mpc.findAllBrani(), utente);
 
 
     public FirstFrame() 

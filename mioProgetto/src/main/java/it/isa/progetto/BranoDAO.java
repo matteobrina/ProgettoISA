@@ -40,7 +40,6 @@ public Brano findById(int id) throws MissingObjectException
             brano.setTitolo(rs.getString("Titolo"));
             brano.setAlbum(rs.getString("Album"));
             brano.setArtista(rs.getString("Artista"));
-            brano.setAscolti(rs.getInt("Ascolti"));
             Blob blob = rs.getBlob("File");
             int blobLength = (int) blob.length();
             byte[] blobAsBytes = blob.getBytes(1, blobLength);
@@ -101,7 +100,6 @@ public List<Brano> findByString(String stringa) throws MissingObjectException
             brano.setTitolo(rs.getString("Titolo"));
             brano.setAlbum(rs.getString("Album"));
             brano.setArtista(rs.getString("Artista"));
-            brano.setAscolti(rs.getInt("Ascolti"));
             Blob blob = rs.getBlob("File");
             int blobLength = (int) blob.length();
             byte[] blobAsBytes = blob.getBytes(1, blobLength);
@@ -157,7 +155,6 @@ public List<Brano> findAllBrani()
             brano.setTitolo(rs.getString("Titolo"));
             brano.setAlbum(rs.getString("Album"));
             brano.setArtista(rs.getString("Artista"));
-            brano.setAscolti(rs.getInt("Ascolti"));
             Blob blob = rs.getBlob("File");
             int blobLength = (int) blob.length();
             byte[] blobAsBytes = blob.getBytes(1, blobLength);
@@ -218,39 +215,7 @@ public int countAllBrani() throws MissingObjectException
     return i;
 }
 
-public Brano incrementaAscolti(Brano brano) 
-{
-    PreparedStatement ps;
-    
 
-    try{
-        String sql="UPDATE Brano"
-                +" SET Ascolti =?"
-                +" WHERE ID= ?";
-
-        ps=conn.prepareStatement(sql);
-        int i=1;
-        ps.setInt(i++, (brano.getAscolti()+1));
-        ps.setInt(i++, brano.getId());
-        ps.executeUpdate();
-
-        
-            ps.close();
-            brano.setAscolti(brano.getAscolti()+1);
-            
-        
-        
-    }
-
-    
-
-    catch(SQLException e)
-    {
-        System.out.println(e.getMessage());
-    }
-
-    return brano;
-}
 
 
 

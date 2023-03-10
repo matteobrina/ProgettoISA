@@ -1,12 +1,13 @@
 package it.isa.progetto;
 
-
+import java.util.HashMap;
 
 public class Utente {
 
     private int id;
     private String username;
     private String password;
+    private HashMap<Brano, Integer> haAscoltato = new HashMap<Brano, Integer>();
     
 
     public int getId()
@@ -39,6 +40,27 @@ public class Utente {
         this.password=password;
     }
 
+    public void setHaAscoltato(HashMap<Brano, Integer> haAscoltato)
+    {
+        this.haAscoltato=haAscoltato;
+    }
+
+    public HashMap<Brano, Integer> getHaAscoltato()
+    {
+        return this.haAscoltato;
+    }
+
+    public Integer getHaAscoltato(Brano brano)
+    {
+        return this.haAscoltato.get(brano);
+    }
+
+    public void setHaAscoltato(Brano brano, Integer ascolti)
+    {
+        this.haAscoltato.put(brano, ascolti);
+    }
+
+   
     
 
 

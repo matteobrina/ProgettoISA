@@ -1,6 +1,6 @@
 package it.isa.progetto;
 
-
+import java.util.HashMap;
 
 public class Brano {
 
@@ -9,8 +9,7 @@ public class Brano {
     private String album;
     private byte[] canzone = new byte[32768];
     private String artista;
-    private int ascolti;
-
+    private HashMap<Utente, Integer> haAscoltato = new HashMap<Utente, Integer>();
     
 
 
@@ -64,15 +63,42 @@ public class Brano {
         return this.artista;
     }
 
-    public void setAscolti(int ascolti)
+    
+
+    public void setHaAscoltato(HashMap<Utente, Integer> haAscoltato)
     {
-        this.ascolti=ascolti;
+        this.haAscoltato=haAscoltato;
     }
 
-    public int getAscolti()
+    public HashMap<Utente, Integer> getHaAscoltato()
     {
-        return this.ascolti;
+        return this.haAscoltato;
     }
+
+    public Integer getHaAscoltato(Utente utente)
+    {
+        return this.haAscoltato.get(utente);
+    }
+
+    public void setHaAscoltato(Utente utente, Integer ascolti)
+    {
+        this.haAscoltato.put(utente, ascolti);
+    }
+
+    public int hashCode()
+    {
+        return this.id;
+    }
+
+    public boolean equals(Brano brano)
+    {
+        if(this.id==brano.getId())
+        return true;
+        else return false;
+    }
+
+    
+    
 
     
 }

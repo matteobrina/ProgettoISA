@@ -91,6 +91,7 @@ public class UtenteDAO {
     public Utente findById(int id) throws MissingObjectException
     {
         Utente utente = new Utente();
+        Brano brano;
         PreparedStatement ps;
 
         try{
@@ -117,6 +118,27 @@ public class UtenteDAO {
             ps.close();
             throw new MissingObjectException("utente non trovato");
         }
+
+        sql= "SELECT *"
+        +" FROM Ha_ascoltato"
+        +" INNER JOIN Brano ON Brano.ID=Ha_ascoltato.IDBrano"
+        +" WHERE idUtente = ?";
+        ps=conn.prepareStatement(sql);
+        i=1;
+        ps.setInt(i++, id);
+        ResultSet rss = ps.executeQuery();
+       if(rss.next())
+       {
+            do
+            {
+                brano = new Brano();
+                brano.setId(rss.getInt("ID"));
+                utente.setHaAscoltato(brano, new Integer(rss.getInt("Ascolti")));
+
+            }
+
+            while(rss.next());
+       }
 
        
 

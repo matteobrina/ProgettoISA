@@ -29,8 +29,8 @@ public class MainPanel extends javax.swing.JPanel implements ActionListener{
     /**
      * Creates new form NewJPanel3
      */
-    public MainPanel(List<Brano> brani, String nome) {
-        initComponents(brani, nome);
+    public MainPanel(List<Brano> brani, Utente utente) {
+        initComponents(brani, utente);
     }
     
     
@@ -42,7 +42,7 @@ public class MainPanel extends javax.swing.JPanel implements ActionListener{
      */
     
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
-    private void initComponents(List<Brano> brani, String nome) {
+    private void initComponents(List<Brano> brani, Utente utente) {
 
         jTextField1 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -73,7 +73,7 @@ public class MainPanel extends javax.swing.JPanel implements ActionListener{
             .addComponent(pannello, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE)
         );
 
-        jLabel2.setText(nome);
+        jLabel2.setText(utente.getUsername());
 
         jButton3.setText("STOP");
         jButton3.setName("STOP1");

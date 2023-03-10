@@ -52,7 +52,7 @@ public class MainPanelController {
 
     public String makeButtonText(Brano brano)
     {
-        return ("Titolo: "+brano.getTitolo()+"\t Album: "+brano.getAlbum()+"\t Artista: "+brano.getArtista()+"\t Ascolti: "+brano.getAscolti());
+        return ("Titolo: "+brano.getTitolo()+"\t Album: "+brano.getAlbum()+"\t Artista: "+brano.getArtista());
     }
 
     public void play(String id) 
@@ -66,7 +66,7 @@ public class MainPanelController {
         BranoDAO branoDao = dao.getBranoDAO();
         try{
         brano=branoDao.findById(Integer.parseInt(id));
-        brano=branoDao.incrementaAscolti(brano);
+        
         dao.commitTransaction();
         dao.closeTransaction();
         OutputStream os = new FileOutputStream(file);
