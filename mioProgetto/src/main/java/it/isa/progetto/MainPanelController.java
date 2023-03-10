@@ -50,9 +50,12 @@ public class MainPanelController {
         return brani;
     }
 
-    public String makeButtonText(Brano brano)
+    public String makeButtonText(Brano brano, Utente utente)
     {
-        return ("Titolo: "+brano.getTitolo()+"\t Album: "+brano.getAlbum()+"\t Artista: "+brano.getArtista());
+        if(utente.getHaAscoltato().containsKey(brano))
+        return ("Titolo: "+brano.getTitolo()+"\t Album: "+brano.getAlbum()+"\t Artista: "+brano.getArtista()+"\t Ascolti: "+utente.getHaAscoltato(brano).intValue());
+        else
+        return ("Titolo: "+brano.getTitolo()+"\t Album: "+brano.getAlbum()+"\t Artista: "+brano.getArtista()+"\t Ascolti: 0");
     }
 
     public void play(String id) 

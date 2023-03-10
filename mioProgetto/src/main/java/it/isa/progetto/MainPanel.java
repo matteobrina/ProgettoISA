@@ -138,7 +138,7 @@ public class MainPanel extends javax.swing.JPanel implements ActionListener{
                 {
             
                     JPanel panel = new JPanel();
-                    JButton button = new JButton(mpc.makeButtonText(brani.get(i)));
+                    JButton button = new JButton(mpc.makeButtonText(brani.get(i), utente));
                     button.setName(Integer.toString(brani.get(i).getId()));
                     panel.add(button);
                     button.addActionListener(this);
