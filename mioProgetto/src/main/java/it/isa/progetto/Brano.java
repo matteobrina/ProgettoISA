@@ -85,16 +85,22 @@ public class Brano {
         this.haAscoltato.put(utente, ascolti);
     }
 
+    @Override
     public int hashCode()
     {
-        return this.id;
+        int hash = 17;
+        hash= this.id;
+        return hash;
     }
 
-    public boolean equals(Brano brano)
+
+    @Override
+    public boolean equals(Object o)
     {
-        if(this.id==brano.getId())
+        if (((Brano)o).getId()==this.id)
         return true;
         else return false;
+
     }
 
     
