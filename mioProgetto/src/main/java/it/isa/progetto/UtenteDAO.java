@@ -275,6 +275,71 @@ public class UtenteDAO {
         catch(SQLException e) {System.out.println(e.getMessage());}
     }
 
+    public void creaAscolto(Brano brano, Utente utente)
+    {  PreparedStatement ps;
+        try{
+
+            String sql="SELECT *"
+            +" FROM Ha_ascoltato"
+            +" WHERE IDUtente = ? AND IDBrano = ?";
+
+            ps=conn.prepareStatement(sql);
+            int i=1;
+            ps.setInt(i++, utente.getId());
+            ps.setInt(i++, brano.getId());
+            ResultSet rs = ps.executeQuery();
+            boolean exist= false;
+            if(rs.next())
+            exist=true;
+            
+            
+            if(exist)
+            {
+                int ascolti = rs.getInt("Ascolti");
+                sql= "UPDATE Ha_ascoltato"
+                    +" SET Ascolti=?"
+                    +" WHERE IDUtente=? AND IDBrano=?";
+                    ps=conn.prepareStatement(sql);
+                    i=1;
+                    ps.setInt(i++, ascolti+1);
+                    ps.setInt(i++, utente.getId());
+                    ps.setInt(i++, brano.getId());
+                    ps.executeUpdate();
+                    ps.close();
+            }
+
+            else
+            {
+                sql="INSERT INTO Ha_ascoltato"
+                    +" values(?, ?, 1)";
+                ps.close();
+                ps=conn.prepareStatement(sql);
+                i=1;
+                ps.setInt(i++, utente.getId());
+                ps.setInt(i++, brano.getId());
+                ps.executeUpdate();
+                ps.close();
+            }
+
+            rs.close();
+
+            
+
+
+        
+
+
+                     
+        
+        }
+    
+
+
+        
+
+        catch(SQLException e) {System.out.println(e.getMessage());}
+    }
+
 
     
 }

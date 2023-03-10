@@ -58,7 +58,7 @@ public class MainPanelController {
         return ("Titolo: "+brano.getTitolo()+"\t Album: "+brano.getAlbum()+"\t Artista: "+brano.getArtista()+"\t Ascolti: 0");
     }
 
-    public void play(String id) 
+    public void play(String id, Utente utente) 
     {
         final AudioClip sound;
         final String FILEPATH = "songs/l.mp3";
@@ -67,9 +67,10 @@ public class MainPanelController {
         DAOFactory dao = new DAOFactory();
         dao.beginTransaction();
         BranoDAO branoDao = dao.getBranoDAO();
+        UtenteDAO uDao = dao.getUtenteDAO();
         try{
         brano=branoDao.findById(Integer.parseInt(id));
-        
+        uDao.creaAscolto(brano, utente);
         dao.commitTransaction();
         dao.closeTransaction();
         OutputStream os = new FileOutputStream(file);
@@ -94,6 +95,26 @@ public class MainPanelController {
         final AudioClip sound;
         sound = new AudioClip(Paths.get("songs/l.mp3").toUri().toString());
         sound.stop();
+    }
+
+    public Utente aggiornaUtente(Utente utente)
+    {
+        DAOFactory df = new DAOFactory();
+        df.beginTransaction();
+        UtenteDAO uDao = df.getUtenteDAO();
+        Utente utenten= new Utente();
+        try{
+        utenten= uDao.findById(utente.getId());
+        df.commitTransaction();
+        df.closeTransaction();
+        return utenten;
+        }
+        catch(MissingObjectException ex)
+        {
+            System.out.println(ex.getMessage());
+        }
+        return utenten;
+
     }
     
 }

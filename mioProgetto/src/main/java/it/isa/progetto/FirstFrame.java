@@ -89,7 +89,7 @@ public class FirstFrame extends JFrame {
                             if (mp.jButton3.isEnabled())
                             mpc.stop();
                            
-                           mp = new MainPanel((mpc.findByString(mp.jTextField1.getText())), utente);
+                           mp = new MainPanel((mpc.findByString(mp.jTextField1.getText())), mpc.aggiornaUtente(utente));
                            mp.jButton1.addActionListener(this);
                            
                            

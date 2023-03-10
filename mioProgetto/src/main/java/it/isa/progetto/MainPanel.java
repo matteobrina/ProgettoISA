@@ -52,6 +52,7 @@ public class MainPanel extends javax.swing.JPanel implements ActionListener{
         jButton3 = new javax.swing.JButton();
         pannello = new TestPane();
         mpc = new MainPanelController();
+        this.utente=utente;
 
         jLabel1.setText("Cerca");
 
@@ -193,7 +194,7 @@ public class MainPanel extends javax.swing.JPanel implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         
-        mpc.play(((JButton)e.getSource()).getName());
+        mpc.play(((JButton)e.getSource()).getName(), utente);
         jButton3.setEnabled(true);
         
         
@@ -219,6 +220,7 @@ public class MainPanel extends javax.swing.JPanel implements ActionListener{
     javax.swing.JTextField jTextField1;
     private TestPane pannello;
     private MainPanelController mpc;
+    Utente utente;
     
     // End of variables declaration                   
 }
