@@ -23,8 +23,7 @@ public class FirstFrame extends JFrame {
     private RegisterPanelController rpc = new RegisterPanelController();
     private MainPanelController mpc = new MainPanelController();
     private Utente utente = new Utente();
-    utente.setUsername(" ");
-    private MainPanel mp = new MainPanel(mpc.findAllBrani(), utente);
+    
 
 
     public FirstFrame() 
@@ -34,6 +33,11 @@ public class FirstFrame extends JFrame {
     
         super("Brinafy");
         File file = new File("songs/l.mp3");
+
+        utente.setUsername("");
+        MainPanel mp = new MainPanel(mpc.findAllBrani(), utente);
+
+
         
         
         
@@ -75,26 +79,26 @@ public class FirstFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try{
-                    Utente utente = lpc.login(lp.jTextField1.getText(), String.valueOf(lp.jTextField2.getPassword()));
+                    Utente utente1 = lpc.login(lp.jTextField1.getText(), String.valueOf(lp.jTextField2.getPassword()));
                     JOptionPane.showMessageDialog(lp, "Login avvenuto con successo!");
-                    username = "Benvenuto "+utente.getUsername();
-                    mp= new MainPanel(mpc.findAllBrani(), username);
+                    
+                    MainPanel mp1= new MainPanel(mpc.findAllBrani(), utente1);
                 
-                    mp.jButton1.addActionListener(new ActionListener(){
+                    mp1.jButton1.addActionListener(new ActionListener(){
 
                         @Override
                         public void actionPerformed(ActionEvent e) {
                            try{ 
 
-                            if (mp.jButton3.isEnabled())
+                            if (mp1.jButton3.isEnabled())
                             mpc.stop();
                            
-                           mp = new MainPanel((mpc.findByString(mp.jTextField1.getText())), username);
-                           mp.jButton1.addActionListener(this);
+                           MainPanel mp2 = new MainPanel((mpc.findByString(mp1.jTextField1.getText())), utente1);
+                           mp2.jButton1.addActionListener(this);
                            
                            
                            
-                           container.add(mp, "7");
+                           container.add(mp2, "7");
             
                            cl.show(container, "7");
             
@@ -103,7 +107,7 @@ public class FirstFrame extends JFrame {
             
                            catch(MissingObjectException ex){
             
-                            JOptionPane.showMessageDialog( mp, "Nessun Brano!");
+                            JOptionPane.showMessageDialog( mp1, "Nessun Brano!");
             
                            }
                           
@@ -122,7 +126,7 @@ public class FirstFrame extends JFrame {
                     });
 
 
-                    container.add(mp, "7");
+                    container.add(mp1, "7");
                     cl.show(container, "7");
                 }
                 catch(MissingObjectException ex)

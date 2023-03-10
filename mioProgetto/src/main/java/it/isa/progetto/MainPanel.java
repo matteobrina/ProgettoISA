@@ -73,7 +73,7 @@ public class MainPanel extends javax.swing.JPanel implements ActionListener{
             .addComponent(pannello, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE)
         );
 
-        jLabel2.setText(utente.getUsername());
+        jLabel2.setText("Benvenuto "+utente.getUsername());
 
         jButton3.setText("STOP");
         jButton3.setName("STOP1");

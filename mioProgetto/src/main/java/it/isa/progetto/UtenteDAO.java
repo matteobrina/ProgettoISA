@@ -162,6 +162,7 @@ public class UtenteDAO {
     {
         Utente utente = new Utente();
         PreparedStatement ps;
+        Brano brano;
 
         try{
         String sql = "SELECT *"
@@ -187,6 +188,27 @@ public class UtenteDAO {
             ps.close();
             throw new MissingObjectException("utente non trovato");
         }
+
+        sql= "SELECT *"
+        +" FROM Ha_ascoltato"
+        +" INNER JOIN Brano ON Brano.ID=Ha_ascoltato.IDBrano"
+        +" WHERE idUtente = ?";
+        ps=conn.prepareStatement(sql);
+        i=1;
+        ps.setInt(i++, utente.getId());
+        ResultSet rss = ps.executeQuery();
+       if(rss.next())
+       {
+            do
+            {
+                brano = new Brano();
+                brano.setId(rss.getInt("ID"));
+                utente.setHaAscoltato(brano, new Integer(rss.getInt("Ascolti")));
+
+            }
+
+            while(rss.next());
+       }
 
         
 
