@@ -79,6 +79,17 @@ public class FirstFrame extends JFrame {
                 
                     
                     mp= new MainPanel(mpc.findAllBrani(), utente);
+                    mp.jButton4.addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e)
+                        {
+                            cl.show(container, "1");
+                            if (mp.jButton3.isEnabled())
+                            mpc.stop();
+                            
+                        }
+                    }); 
+                    
                 
                     mp.jButton1.addActionListener(new ActionListener(){
 
@@ -91,6 +102,15 @@ public class FirstFrame extends JFrame {
                            
                            mp = new MainPanel((mpc.findByString(mp.jTextField1.getText())), mpc.aggiornaUtente(utente));
                            mp.jButton1.addActionListener(this);
+                           mp.jButton4.addActionListener(new ActionListener() {
+                            @Override
+                            public void actionPerformed(ActionEvent e)
+                            {
+                                cl.show(container, "1");
+                                if (mp.jButton3.isEnabled())
+                            mpc.stop();
+                            }
+                        }); 
                            
                            
                            
