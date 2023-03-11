@@ -6,6 +6,7 @@ import org.junit.jupiter.api.TestInstance.Lifecycle;
 import static org.junit.Assert.assertEquals;
 
 import java.lang.reflect.Field;
+import java.util.HashMap;
 
 
 @TestInstance(Lifecycle.PER_CLASS)
@@ -104,5 +105,94 @@ public class UtenteTest {
         assertEquals("field wasn't retrieved properly", result, "testgetpassword");
     }
 
+    @Test
+    public void testSetHaAscoltato() throws NoSuchFieldException, IllegalAccessException {
+        //given
+        final Utente utente = new Utente();
+        Brano brano = new Brano();
+        Integer integer = new Integer(6);
+        HashMap<Brano, Integer> mappa = new HashMap<Brano, Integer>();
+        HashMap<Brano, Integer> mappa2 = new HashMap<Brano, Integer>();
+        mappa.put(brano, integer);
+        mappa2.put(brano, integer);
+
+
+
+
+        //when
+        utente.setHaAscoltato(mappa);
+
+        //then
+        final Field field = utente.getClass().getDeclaredField("haAscoltato");
+        field.setAccessible(true);
+        assertEquals("Fields didn't match", field.get(utente), mappa2);
+
+    }
+
+    @Test
+    public void testGetHaAscoltato() throws NoSuchFieldException, IllegalAccessException {
+        //given
+        final Utente utente = new Utente();
+        Brano brano = new Brano();
+        Integer integer = new Integer(6);
+        HashMap<Brano, Integer> mappa = new HashMap<Brano, Integer>();
+        HashMap<Brano, Integer> mappa2 = new HashMap<Brano, Integer>();
+        mappa.put(brano, integer);
+        mappa2.put(brano, integer);
+        final Field field = utente.getClass().getDeclaredField("haAscoltato");
+        field.setAccessible(true);
+        field.set(utente, mappa);
+
+        //when
+        final HashMap<Brano, Integer> result = utente.getHaAscoltato();
+
+        //then
+        assertEquals("field wasn't retrieved properly", result, mappa2);
+    }
+
+    @Test
+    public void testSetHaAscoltato2() throws NoSuchFieldException, IllegalAccessException {
+        //given
+        final Utente utente = new Utente();
+        Brano brano = new Brano();
+        Integer ascolti = new Integer(6);
+        
+        HashMap<Brano, Integer> mappa2 = new HashMap<Brano, Integer>();
+        mappa2.put(brano, ascolti);
+
+
+
+
+        //when
+        utente.setHaAscoltato(brano, ascolti);
+
+        //then
+        final Field field = utente.getClass().getDeclaredField("haAscoltato");
+        field.setAccessible(true);
+        assertEquals("Fields didn't match", field.get(utente), mappa2);
+
+    }
+
+    @Test
+    public void testGetHaAscoltato2() throws NoSuchFieldException, IllegalAccessException {
+        //given
+        final Utente utente = new Utente();
+        Brano brano = new Brano();
+        Integer integer = new Integer(6);
+        HashMap<Brano, Integer> mappa = new HashMap<Brano, Integer>();
+        
+        mappa.put(brano, integer);
+        
+        final Field field = utente.getClass().getDeclaredField("haAscoltato");
+        field.setAccessible(true);
+        field.set(utente, mappa);
+
+        //when
+        final Integer result = utente.getHaAscoltato(brano);
+
+        //then
+        assertEquals("field wasn't retrieved properly", result, integer);
+    }
+    
     
 }

@@ -5,7 +5,7 @@ import org.junit.jupiter.api.TestInstance;
 import static org.junit.Assert.assertEquals;
 
 import java.lang.reflect.Field;
-
+import java.util.HashMap;
 
 import org.junit.Test;
 import org.junit.jupiter.api.TestInstance.Lifecycle;
@@ -175,36 +175,89 @@ public class BranoTest {
     }
 
     @Test
-    public void testSetAscolti() throws NoSuchFieldException, IllegalAccessException {
+    public void testSetHaAscoltato() throws NoSuchFieldException, IllegalAccessException {
         //given
         final Brano brano = new Brano();
-        final int a = 9;
+        Utente utente = new Utente();
+        Integer integer = new Integer(6);
+        HashMap<Utente, Integer> mappa = new HashMap<Utente, Integer>();
+        HashMap<Utente, Integer> mappa2 = new HashMap<Utente, Integer>();
+        mappa.put(utente, integer);
+        mappa2.put(utente, integer);
 
         //when
-        brano.setAscolti(a);
+        brano.setHaAscoltato(mappa);
 
         //then
-        final Field field = brano.getClass().getDeclaredField("ascolti");
+        final Field field = brano.getClass().getDeclaredField("haAscoltato");
         field.setAccessible(true);
-        assertEquals("Fields didn't match", field.get(brano), a);
+        assertEquals("Fields didn't match", field.get(brano), mappa2);
 
     }
 
     @Test
-    public void testGetAscolti() throws NoSuchFieldException, IllegalAccessException {
+    public void testGetHaAscoltato() throws NoSuchFieldException, IllegalAccessException {
         //given
         final Brano brano = new Brano();
-        final int a = 15;
-        final Field field = brano.getClass().getDeclaredField("ascolti");
+        Utente utente = new Utente();
+        Integer integer = new Integer(6);
+        HashMap<Utente, Integer> mappa = new HashMap<Utente, Integer>();
+        HashMap<Utente, Integer> mappa2 = new HashMap<Utente, Integer>();
+        mappa.put(utente, integer);
+        mappa2.put(utente, integer);
+        final Field field = brano.getClass().getDeclaredField("haAscoltato");
         field.setAccessible(true);
-        field.set(brano, a);
+        field.set(brano, mappa);
 
         //when
-        final int result = brano.getAscolti();
+        final HashMap<Utente, Integer> result = brano.getHaAscoltato();
 
         //then
-        assertEquals("field wasn't retrieved properly", result, a);
+        assertEquals("field wasn't retrieved properly", result, mappa2);
     }
+
+    @Test
+    public void testSetHaAscoltato2() throws NoSuchFieldException, IllegalAccessException {
+        //given
+        final Brano brano = new Brano();
+        Utente utente = new Utente();
+        Integer integer = new Integer(6);
+        HashMap<Utente, Integer> mappa = new HashMap<Utente, Integer>();
+        
+        mappa.put(utente, integer);
+       
+
+        //when
+        brano.setHaAscoltato(utente, integer);
+
+        //then
+        final Field field = brano.getClass().getDeclaredField("haAscoltato");
+        field.setAccessible(true);
+        assertEquals("Fields didn't match", field.get(brano), mappa);
+
+    }
+
+    @Test
+    public void testGetHaAscoltato2() throws NoSuchFieldException, IllegalAccessException {
+        //given
+        final Brano brano = new Brano();
+        Utente utente = new Utente();
+        Integer integer = new Integer(6);
+        HashMap<Utente, Integer> mappa = new HashMap<Utente, Integer>();
+        
+        mappa.put(utente, integer);
+        
+        final Field field = brano.getClass().getDeclaredField("haAscoltato");
+        field.setAccessible(true);
+        field.set(brano, mappa);
+
+        //when
+        final Integer result = brano.getHaAscoltato(utente);
+
+        //then
+        assertEquals("field wasn't retrieved properly", result, integer);
+    }
+   
 
   
 
