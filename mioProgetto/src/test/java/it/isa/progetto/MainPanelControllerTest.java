@@ -52,7 +52,6 @@ public class MainPanelControllerTest{
             brano.setTitolo("Money");
             brano.setAlbum("The Dark Side Of The Moon");
             brano.setArtista("Pink Floyd");
-            brano.setAscolti(0);
             brano.setCanzone(bytes);
             brano2=brani.get(0);
             assertEquals(brano.getId(), brano2.getId());
@@ -73,38 +72,9 @@ public class MainPanelControllerTest{
             }
     }
 
-    @Test
-    public void playTest()
-    {
-        MainPanelController mpc = new MainPanelController();
-        try
-        {
-            File file = new File("songs/l.mp3");
-            mpc.play("1");
-            file.delete();
-        }
-        catch(Exception ex)
-        {
-            System.out.println(ex.getMessage());
-        }
-        
-    }
+    
 
-    @Test
-    public void playExceptionTest()
-    {
-        MainPanelController mpc = new MainPanelController();
-        try
-        {
-            File file = new File("songs/l.mp3");
-            mpc.play("0");
-            file.delete();
-        }
-        catch(Exception ex)
-        {
-            System.out.println(ex.getMessage());
-        }
-    }
+    
 
     @Test
     public void stopTest()

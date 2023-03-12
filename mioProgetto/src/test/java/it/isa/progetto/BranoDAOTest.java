@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
-import java.sql.PreparedStatement;
+
 
 public class BranoDAOTest {
 
@@ -28,6 +28,7 @@ public class BranoDAOTest {
 
             
             Brano brano = new Brano();
+            
             Brano brano2 = new Brano();
             File file = new File("src/test/java/it/isa/progetto/Files/05. Mone.mp3");
             byte[] bytes = Files.readAllBytes(file.toPath());
@@ -35,7 +36,6 @@ public class BranoDAOTest {
             brano.setTitolo("Money");
             brano.setAlbum("The Dark Side Of The Moon");
             brano.setArtista("Pink Floyd");
-            brano.setAscolti(0);
             brano.setCanzone(bytes);
 
             BranoDAO dao = new BranoDAO(con);
@@ -99,7 +99,6 @@ public class BranoDAOTest {
             brano.setTitolo("Money");
             brano.setAlbum("The Dark Side Of The Moon");
             brano.setArtista("Pink Floyd");
-            brano.setAscolti(0);
             brano.setCanzone(bytes);
             brano2=brani.get(0);
             assertEquals(brano.getId(), brano2.getId());
@@ -245,57 +244,7 @@ public void countAllBraniSQLExceptionTest()
 
 }
 
-@Test
-public void incrementaAscoltiTest()
-{
-     try{
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/PROGETTO", "root", "Internazionale99");
-            BranoDAO dao = new BranoDAO(con);
-            Brano brano = dao.findById(1);
-            int a = brano.getAscolti()+1;
-            brano=dao.incrementaAscolti(brano);
-           int b = brano.getAscolti();
-            assertEquals(a, b);
 
-    }
-
-    catch(Exception ex)
-    {
-        System.out.println(ex.getMessage());
-    }
-
-    finally
-    {
-        try{
-            PreparedStatement ps;
-        Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/PROGETTO", "root", "Internazionale99");
-            BranoDAO dao = new BranoDAO(con);
-            
-                Brano brano = dao.findById(1);
-        String sql="UPDATE Brano"
-                +" SET Ascolti =?"
-                +" WHERE ID= ?";
-
-        ps=con.prepareStatement(sql);
-        int i=1;
-        ps.setInt(i++, (brano.getAscolti()-1));
-        ps.setInt(i++, brano.getId());
-        ps.executeUpdate();
-        
-            ps.close();
-            
-        
-        
-    }
-
-    catch(Exception ex)
-    {
-        System.out.println(ex.getMessage());
-    }
-    } 
-}
 
 @Test
 public void FindByIdSQLExceptionTest()
@@ -333,23 +282,6 @@ public void FindByStringSQLExceptionTest()
 
 }
 
-@Test
-public void incrementaAscoltiSQLExceptionTest()
-{
-    try{
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/PROGETTO", "root", "Internazionale99");
-        BranoDAO dao = new BranoDAO(con);
-        con.close();
-        dao.incrementaAscolti(new Brano());
-    }
-
-    catch(Exception ex)
-    {
-        System.out.println(ex.getMessage());
-    }
-
-}
 
 
 }

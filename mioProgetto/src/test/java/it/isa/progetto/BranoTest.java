@@ -3,6 +3,8 @@ package it.isa.progetto;
 import org.junit.jupiter.api.TestInstance;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import java.lang.reflect.Field;
 import java.util.HashMap;
@@ -256,6 +258,23 @@ public class BranoTest {
 
         //then
         assertEquals("field wasn't retrieved properly", result, integer);
+    }
+
+    @Test
+    public void testEquals()
+    {
+        Brano brano1 = new Brano();
+        Brano brano2 = new Brano();
+        Brano brano3 = new Brano();
+        brano1.setId(0);
+        brano2.setId(0);
+        brano3.setId(1);
+        boolean uguali;
+        boolean nonuguali;
+        uguali = brano1.equals(brano2);
+        nonuguali=brano1.equals(brano3);
+        assertTrue(uguali);
+        assertFalse(nonuguali);
     }
    
 
