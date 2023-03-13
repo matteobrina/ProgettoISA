@@ -5,6 +5,8 @@ import static org.junit.Assert.assertThrows;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.util.HashMap;
+
 
 import org.junit.Test;
 
@@ -23,27 +25,46 @@ public class UtenteDAOTest {
 
         try{
         Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/PROGETTO", "root", "Internazionale99");
+            Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/PROGETTO2", "root", "Internazionale99");
 
             
             
         
         Utente utente1 = new Utente();
         Utente utente2 = new Utente();
+        Brano brano = new Brano();
+        brano.setId(1);
 
        UtenteDAO dao =new UtenteDAO(con);
       
         
        utente1=dao.create("prova", "prova");
+       utente2.setUsername("prova");
+       utente2.setPassword("prova");
+       int id=utente1.getId();
+       utente2.setId(id);
+       utente1 = dao.findById(id);
 
-       utente2 = dao.findById(utente1.getId());
+       
+       dao.creaAscolto(brano, utente1);
+        dao.creaAscolto(brano, utente1);
+        
+       utente1 = dao.findById(id);
+        HashMap<Brano, Integer> mappa = new HashMap<Brano, Integer>();
+        Integer integer = new Integer(2);
+        mappa.put(brano, integer);
+        utente2.setHaAscoltato(mappa);
        
 
+        
         assertEquals(utente1.getId(), utente2.getId());
         assertEquals(utente1.getUsername(), utente2.getUsername());
         assertEquals(utente1.getPassword(), utente2.getPassword());
+        assertEquals(utente1.getHaAscoltato(), utente2.getHaAscoltato());
+        
+        
 
-        dao.deleteUtente(utente2);
+        dao.deleteUtente(utente1);
         
     }
 
@@ -67,7 +88,7 @@ public class UtenteDAOTest {
 
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/PROGETTO", "root", "Internazionale99");
+            Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/PROGETTO2", "root", "Internazionale99");
             UtenteDAO dao = new UtenteDAO(con);
         
        dao.create("prova", "prova");
@@ -90,7 +111,7 @@ public class UtenteDAOTest {
         try
         {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/PROGETTO", "root", "Internazionale99");
+            Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/PROGETTO2", "root", "Internazionale99");
             UtenteDAO dao = new UtenteDAO(con);
            
             Utente utente1 = new Utente();
@@ -109,7 +130,7 @@ public class UtenteDAOTest {
     {
         try{
         Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/PROGETTO", "root", "Internazionale99");
+        Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/PROGETTO2", "root", "Internazionale99");
         UtenteDAO dao = new UtenteDAO(con);
         con.close();
         
@@ -126,13 +147,37 @@ public class UtenteDAOTest {
 
     }
 
+    @Test 
+    public void testCreaAscoltiSQLException()
+    {
+        try{
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/PROGETTO2", "root", "Internazionale99");
+        UtenteDAO dao = new UtenteDAO(con);
+        con.close();
+        Utente utente = new Utente();
+        Brano brano = new Brano();
+        
+       
+        
+        dao.creaAscolto(brano, utente);
+        
+       }
+       catch(Exception e)
+       {
+        System.out.println(e.getMessage());
+       }
+
+
+    }
+
 @Test
 
 public void testFindByIDNotFoundException()
 {
     try{
         Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/PROGETTO", "root", "Internazionale99");
+        Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/PROGETTO2", "root", "Internazionale99");
 
         UtenteDAO dao = new UtenteDAO(con);
         
@@ -150,7 +195,7 @@ public void testFindByUsernameNotFoundException()
 {
     try{
         Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/PROGETTO", "root", "Internazionale99");
+            Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/PROGETTO2", "root", "Internazionale99");
             UtenteDAO dao = new UtenteDAO(con);
         
         
@@ -169,7 +214,7 @@ public void testFindByUsernameNotFoundException()
     {
         try{
         Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/PROGETTO", "root", "Internazionale99");
+        Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/PROGETTO2", "root", "Internazionale99");
         UtenteDAO dao = new UtenteDAO(con);
         con.close();
         
@@ -192,7 +237,7 @@ public void testDeleteUtenteNotFoundException()
 {
     try{
         Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/PROGETTO", "root", "Internazionale99");
+            Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/PROGETTO2", "root", "Internazionale99");
             UtenteDAO dao = new UtenteDAO(con);
         Utente utente = new Utente();
         utente.setUsername("0");
@@ -211,7 +256,7 @@ public void testDeleteUtenteNotFoundException()
     {
         try{
         Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/PROGETTO", "root", "Internazionale99");
+        Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/PROGETTO2", "root", "Internazionale99");
         UtenteDAO dao = new UtenteDAO(con);
         con.close();
         
@@ -233,7 +278,7 @@ public void testDeleteUtenteNotFoundException()
     {
         try{
         Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/PROGETTO", "root", "Internazionale99");
+        Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/PROGETTO2", "root", "Internazionale99");
         UtenteDAO dao = new UtenteDAO(con);
         con.close();
         

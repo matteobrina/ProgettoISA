@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.io.File;
 import java.nio.file.Files;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.junit.Test;
@@ -90,6 +91,45 @@ public class MainPanelControllerTest{
         {
             System.out.println(ex.getMessage());
         }
+    }
+
+    @Test 
+    public void makeButtonTextTest()
+    {
+        MainPanelController mpc = new MainPanelController();
+        Brano brano = new Brano();
+        Utente utente = new Utente();
+        HashMap<Brano, Integer> map = new HashMap<Brano, Integer>();
+        brano.setId(1);
+        brano.setTitolo("prova");
+        brano.setAlbum("prova");
+        brano.setArtista("prova");
+        utente.setId(1);
+        Integer integer = new Integer(1);
+        String etichetta1= mpc.makeButtonText(brano, utente);
+        assertEquals(etichetta1, "Titolo: "+brano.getTitolo()+"\t Album: "+brano.getAlbum()+"\t Artista: "+brano.getArtista()+"\t Ascolti: 0");
+        map.put(brano, integer);
+        utente.setHaAscoltato(map);
+        String etichetta2=mpc.makeButtonText(brano, utente);
+        assertEquals(etichetta2, "Titolo: "+brano.getTitolo()+"\t Album: "+brano.getAlbum()+"\t Artista: "+brano.getArtista()+"\t Ascolti: "+utente.getHaAscoltato(brano).intValue());
+
+    }
+
+    @Test
+    public void playTestException()
+    {
+        MainPanelController mpc = new MainPanelController();
+        Utente utente = new Utente();
+        mpc.play("0", utente);
+
+    }
+
+    @Test
+    public void aggiornaUtenteTestException()
+    {
+        MainPanelController mpc = new MainPanelController();
+        Utente utente = new Utente();
+        mpc.aggiornaUtente(utente);
     }
 
 }
