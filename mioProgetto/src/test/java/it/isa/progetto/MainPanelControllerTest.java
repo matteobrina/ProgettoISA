@@ -77,21 +77,7 @@ public class MainPanelControllerTest{
 
     
 
-    @Test
-    public void stopTest()
-    {
-        MainPanelController mpc = new MainPanelController();
-        try
-        {
-            File file = new File("songs/l.mp3");
-            mpc.stop();
-            file.delete();
-        }
-        catch(Exception ex)
-        {
-            System.out.println(ex.getMessage());
-        }
-    }
+    
 
     @Test 
     public void makeButtonTextTest()
@@ -105,7 +91,7 @@ public class MainPanelControllerTest{
         brano.setAlbum("prova");
         brano.setArtista("prova");
         utente.setId(1);
-        Integer integer = new Integer(1);
+        Integer integer = Integer.valueOf(1);
         String etichetta1= mpc.makeButtonText(brano, utente);
         assertEquals(etichetta1, "Titolo: "+brano.getTitolo()+"\t Album: "+brano.getAlbum()+"\t Artista: "+brano.getArtista()+"\t Ascolti: 0");
         map.put(brano, integer);

@@ -49,7 +49,7 @@ public class MainPanel extends javax.swing.JPanel implements ActionListener{
         jButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
+        
         jButton4 = new javax.swing.JButton();
         pannello = new TestPane();
         mpc = new MainPanelController();
@@ -77,9 +77,7 @@ public class MainPanel extends javax.swing.JPanel implements ActionListener{
 
         jLabel2.setText("Benvenuto "+utente.getUsername());
 
-        jButton3.setText("STOP");
-        jButton3.setName("STOP1");
-        jButton3.setEnabled(false);
+        
         jButton4.setText("Logout");
         jButton4.setName("Logout");
         
@@ -95,7 +93,7 @@ public class MainPanel extends javax.swing.JPanel implements ActionListener{
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                
                 .addGap(18, 18, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(15, 15, 15)
@@ -120,7 +118,7 @@ public class MainPanel extends javax.swing.JPanel implements ActionListener{
                                 .addGap(21, 21, 21)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                    )))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton1))
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -129,17 +127,7 @@ public class MainPanel extends javax.swing.JPanel implements ActionListener{
         );
 
         
-        jButton3.addActionListener(new ActionListener(){
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-               mpc.stop();
-               jButton3.setEnabled(false);
-               
-                
-            }
-            
-        });    
+        
             
             
             for(int i=0; i<brani.size(); i++)
@@ -202,7 +190,7 @@ public class MainPanel extends javax.swing.JPanel implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         
         mpc.play(((JButton)e.getSource()).getName(), utente);
-        jButton3.setEnabled(true);
+        
         
         
         
@@ -220,7 +208,7 @@ public class MainPanel extends javax.swing.JPanel implements ActionListener{
     // Variables declaration - do not modify                     
     javax.swing.JButton jButton1;
     
-    javax.swing.JButton jButton3;
+    
     javax.swing.JButton jButton4;
 
     private javax.swing.JLabel jLabel2;

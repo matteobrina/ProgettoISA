@@ -133,7 +133,7 @@ public class UtenteDAO {
             {
                 brano = new Brano();
                 brano.setId(rss.getInt("ID"));
-                utente.setHaAscoltato(brano, new Integer(rss.getInt("Ascolti")));
+                utente.setHaAscoltato(brano, Integer.valueOf(rss.getInt("Ascolti")));
 
             }
 
@@ -203,7 +203,7 @@ public class UtenteDAO {
             {
                 brano = new Brano();
                 brano.setId(rss.getInt("ID"));
-                utente.setHaAscoltato(brano, new Integer(rss.getInt("Ascolti")));
+                utente.setHaAscoltato(brano, Integer.valueOf(rss.getInt("Ascolti")));
 
             }
 

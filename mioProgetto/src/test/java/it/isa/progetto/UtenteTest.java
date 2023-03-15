@@ -110,7 +110,7 @@ public class UtenteTest {
         //given
         final Utente utente = new Utente();
         Brano brano = new Brano();
-        Integer integer = new Integer(6);
+        Integer integer = Integer.valueOf(6);
         HashMap<Brano, Integer> mappa = new HashMap<Brano, Integer>();
         HashMap<Brano, Integer> mappa2 = new HashMap<Brano, Integer>();
         mappa.put(brano, integer);
@@ -134,7 +134,7 @@ public class UtenteTest {
         //given
         final Utente utente = new Utente();
         Brano brano = new Brano();
-        Integer integer = new Integer(6);
+        Integer integer = Integer.valueOf(6);
         HashMap<Brano, Integer> mappa = new HashMap<Brano, Integer>();
         HashMap<Brano, Integer> mappa2 = new HashMap<Brano, Integer>();
         mappa.put(brano, integer);
@@ -155,7 +155,7 @@ public class UtenteTest {
         //given
         final Utente utente = new Utente();
         Brano brano = new Brano();
-        Integer ascolti = new Integer(6);
+        Integer ascolti = Integer.valueOf(6);
         
         HashMap<Brano, Integer> mappa2 = new HashMap<Brano, Integer>();
         mappa2.put(brano, ascolti);
@@ -178,7 +178,7 @@ public class UtenteTest {
         //given
         final Utente utente = new Utente();
         Brano brano = new Brano();
-        Integer integer = new Integer(6);
+        Integer integer = Integer.valueOf(6);
         HashMap<Brano, Integer> mappa = new HashMap<Brano, Integer>();
         
         mappa.put(brano, integer);

@@ -51,7 +51,7 @@ public class UtenteDAOTest {
         
        utente1 = dao.findById(id);
         HashMap<Brano, Integer> mappa = new HashMap<Brano, Integer>();
-        Integer integer = new Integer(2);
+        Integer integer = Integer.valueOf(2);
         mappa.put(brano, integer);
         utente2.setHaAscoltato(mappa);
        

@@ -30,9 +30,21 @@ public class FirstFrame extends JFrame {
     {
 
         
+
+        
     
         super("Brinafy");
         File file = new File("songs/l.mp3");
+        file.getParentFile().mkdirs();
+        try{
+        
+        file.createNewFile();
+        }
+
+        catch(Exception ex)
+        {
+            System.out.println(ex.getMessage());
+        }
         
         
         
@@ -84,8 +96,7 @@ public class FirstFrame extends JFrame {
                         public void actionPerformed(ActionEvent e)
                         {
                             cl.show(container, "1");
-                            if (mp.jButton3.isEnabled())
-                            mpc.stop();
+                            
                             
                         }
                     }); 
@@ -97,8 +108,8 @@ public class FirstFrame extends JFrame {
                         public void actionPerformed(ActionEvent e) {
                            try{ 
 
-                            if (mp.jButton3.isEnabled())
-                            mpc.stop();
+                            
+                            
                            
                            mp = new MainPanel((mpc.findByString(mp.jTextField1.getText())), mpc.aggiornaUtente(utente));
                            mp.jButton1.addActionListener(this);
@@ -107,8 +118,7 @@ public class FirstFrame extends JFrame {
                             public void actionPerformed(ActionEvent e)
                             {
                                 cl.show(container, "1");
-                                if (mp.jButton3.isEnabled())
-                            mpc.stop();
+                                
                             }
                         }); 
                            

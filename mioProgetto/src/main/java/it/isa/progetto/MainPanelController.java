@@ -5,13 +5,14 @@ import java.io.File;
 import java.io.FileOutputStream;
 
 import java.io.OutputStream;
-import java.nio.file.Paths;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.awt.Desktop;
 
 
 
-import javafx.scene.media.AudioClip;
+
 
 public class MainPanelController {
 
@@ -60,7 +61,7 @@ public class MainPanelController {
 
     public void play(String id, Utente utente) 
     {
-        final AudioClip sound;
+        
         final String FILEPATH = "songs/l.mp3";
         final File file = new File(FILEPATH);
         Brano brano;
@@ -77,9 +78,7 @@ public class MainPanelController {
         os.write(brano.getCanzone());
         os.close();
         
-        sound = new AudioClip(Paths.get("songs/l.mp3").toUri().toString());
-        sound.stop();
-        sound.play();
+        Desktop.getDesktop().open(new File("songs/l.mp3"));
         }
         catch(Exception ex)
         {
@@ -90,12 +89,7 @@ public class MainPanelController {
 
     }
 
-    public void stop()
-    {
-        final AudioClip sound;
-        sound = new AudioClip(Paths.get("songs/l.mp3").toUri().toString());
-        sound.stop();
-    }
+    
 
     public Utente aggiornaUtente(Utente utente)
     {
