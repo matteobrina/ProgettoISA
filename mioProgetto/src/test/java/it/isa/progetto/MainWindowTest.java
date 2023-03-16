@@ -19,7 +19,7 @@ public class MainWindowTest extends AbstractUiTest {
     private JButtonFixture ok;
     private JButtonFixture song;
     private JButtonFixture invio1;
-    private JButtonFixture stop;
+   
     private JButtonFixture logout;
 
 
@@ -87,10 +87,6 @@ public class MainWindowTest extends AbstractUiTest {
         this.ok.requireVisible().requireEnabled().click();
         this.song = this.frame.button(JButtonMatcher .withName("1").andShowing());
         this.song.requireVisible().requireEnabled().click();
-        this.stop = this.frame.button(JButtonMatcher .withName("STOP1").andShowing());
-        this.stop.requireVisible().requireEnabled().click();
-        this.song = this.frame.button(JButtonMatcher .withName("2").andShowing());
-        this.song.requireVisible().requireEnabled().click();
         this.cerca1=this.frame.textBox(JTextComponentMatcher.withName("Cerca1").andShowing());
         this.invio1 = this.frame.button(JButtonMatcher .withName("Invio1").andShowing());
         this.cerca1.enterText("hhhhhhhhh");
@@ -101,39 +97,9 @@ public class MainWindowTest extends AbstractUiTest {
         this.invio1.requireVisible().requireEnabled().click();
         this.song = this.frame.button(JButtonMatcher .withName("5").andShowing());
         this.song.requireVisible().requireEnabled().click();
-        this.stop = this.frame.button(JButtonMatcher .withName("STOP1").andShowing());
-        this.stop.requireVisible().requireEnabled().click();
         this.logout = this.frame.button(JButtonMatcher .withName("Logout").andShowing());
         this.logout.requireVisible().requireEnabled().click();
         this.login.requireVisible().requireEnabled().click();
-        this.username1=this.frame.textBox(JTextComponentMatcher.withName("Username1"));
-        this.password1=this.frame.textBox(JTextComponentMatcher.withName("Password1"));
-        this.conferma1 = this.frame.button(JButtonMatcher.withName("Conferma1"));
-        this.username1.enterText("test");
-        this.password1.enterText("test");
-        this.conferma1.requireVisible().requireEnabled().click();
-        this.ok = this.frame.button(JButtonMatcher.withText("OK"));
-        this.ok.requireVisible().requireEnabled().click();
-        this.cerca1=this.frame.textBox(JTextComponentMatcher.withName("Cerca1").andShowing());
-        this.invio1 = this.frame.button(JButtonMatcher .withName("Invio1").andShowing());
-        this.cerca1.enterText("money");
-        this.invio1.requireVisible().requireEnabled().click();
-        
-        this.song = this.frame.button(JButtonMatcher .withName("5").andShowing());
-        this.song.requireVisible().requireEnabled().click();
-        this.logout = this.frame.button(JButtonMatcher .withName("Logout").andShowing());
-        this.logout.requireVisible().requireEnabled().click();
-        this.login.requireVisible().requireEnabled().click();
-        this.username1=this.frame.textBox(JTextComponentMatcher.withName("Username1"));
-        this.password1=this.frame.textBox(JTextComponentMatcher.withName("Password1"));
-        this.conferma1 = this.frame.button(JButtonMatcher.withName("Conferma1"));
-        this.username1.enterText("test");
-        this.password1.enterText("test");
-        this.conferma1.requireVisible().requireEnabled().click();
-        this.ok = this.frame.button(JButtonMatcher.withText("OK"));
-        this.ok.requireVisible().requireEnabled().click();
-        this.logout = this.frame.button(JButtonMatcher .withName("Logout").andShowing());
-        this.logout.requireVisible().requireEnabled().click();
         this.frame.close();
 
 
@@ -167,7 +133,7 @@ public class MainWindowTest extends AbstractUiTest {
         this.cerca1=null;
         this.invio1=null;
         this.song=null;
-        this.stop=null;
+        
         this.logout=null;
 
         try{
