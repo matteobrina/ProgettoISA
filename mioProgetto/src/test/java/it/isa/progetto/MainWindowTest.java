@@ -2,6 +2,7 @@ package it.isa.progetto;
 
 import java.io.File;
 
+
 import org.assertj.swing.core.matcher.JButtonMatcher;
 import org.assertj.swing.core.matcher.JTextComponentMatcher;
 import org.assertj.swing.fixture.JButtonFixture;
@@ -60,6 +61,8 @@ public class MainWindowTest extends AbstractUiTest {
         this.ok = this.frame.button(JButtonMatcher.withText("OK"));
         this.ok.requireVisible().requireEnabled().click();
         this.registrati.requireVisible().requireEnabled().click();
+        this.username2.deleteText();
+        this.password2.deleteText();
         this.username2.enterText("test");
         this.password2.enterText("test");
         this.conferma2.requireVisible().requireEnabled().click();
@@ -75,16 +78,22 @@ public class MainWindowTest extends AbstractUiTest {
         this.conferma1.requireVisible().requireEnabled().click();
         this.ok = this.frame.button(JButtonMatcher.withText("OK"));
         this.ok.requireVisible().requireEnabled().click();
+        this.username1.deleteText();
+        this.password1.deleteText();
         this.username1.enterText("test");
         this.password1.enterText("test1");
         this.conferma1.requireVisible().requireEnabled().click();
         this.ok = this.frame.button(JButtonMatcher.withText("OK"));
         this.ok.requireVisible().requireEnabled().click();
+        this.username1.deleteText();
+        this.password1.deleteText();
         this.username1.enterText("test");
         this.password1.enterText("test");
         this.conferma1.requireVisible().requireEnabled().click();
         this.ok = this.frame.button(JButtonMatcher.withText("OK"));
         this.ok.requireVisible().requireEnabled().click();
+        this.song = this.frame.button(JButtonMatcher .withName("1").andShowing());
+        this.song.requireVisible().requireEnabled().click();
         this.song = this.frame.button(JButtonMatcher .withName("1").andShowing());
         this.song.requireVisible().requireEnabled().click();
         this.cerca1=this.frame.textBox(JTextComponentMatcher.withName("Cerca1").andShowing());
@@ -93,6 +102,7 @@ public class MainWindowTest extends AbstractUiTest {
         this.invio1.requireVisible().requireEnabled().click();
         this.ok = this.frame.button(JButtonMatcher.withText("OK"));
         this.ok.requireVisible().requireEnabled().click();
+        this.cerca1.deleteText();
         this.cerca1.enterText("money");
         this.invio1.requireVisible().requireEnabled().click();
         this.song = this.frame.button(JButtonMatcher .withName("5").andShowing());
@@ -100,6 +110,20 @@ public class MainWindowTest extends AbstractUiTest {
         this.logout = this.frame.button(JButtonMatcher .withName("Logout").andShowing());
         this.logout.requireVisible().requireEnabled().click();
         this.login.requireVisible().requireEnabled().click();
+        this.username1=this.frame.textBox(JTextComponentMatcher.withName("Username1"));
+        this.password1=this.frame.textBox(JTextComponentMatcher.withName("Password1"));
+        this.conferma1 = this.frame.button(JButtonMatcher.withName("Conferma1"));
+        this.username1.deleteText();
+        this.password1.deleteText();
+        this.username1.enterText("test");
+        this.password1.enterText("test");
+        this.conferma1.requireVisible().requireEnabled().click();
+        this.ok = this.frame.button(JButtonMatcher.withText("OK"));
+        this.ok.requireVisible().requireEnabled().click();
+        
+        this.logout = this.frame.button(JButtonMatcher .withName("Logout").andShowing());
+        this.logout.requireVisible().requireEnabled().click();
+        
         this.frame.close();
 
 
