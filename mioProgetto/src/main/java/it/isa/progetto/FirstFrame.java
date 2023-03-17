@@ -238,7 +238,7 @@ public class FirstFrame extends JFrame {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
-        setAlwaysOnTop(true);
+        
     }
 
 
