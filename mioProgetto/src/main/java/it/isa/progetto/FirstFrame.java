@@ -36,15 +36,7 @@ public class FirstFrame extends JFrame {
         super("Brinafy");
         File file = new File("songs/l.mp3");
         file.getParentFile().mkdirs();
-        try{
         
-        file.createNewFile();
-        }
-
-        catch(Exception ex)
-        {
-            System.out.println(ex.getMessage());
-        }
         
         
         
