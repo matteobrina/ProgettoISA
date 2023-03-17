@@ -25,7 +25,7 @@ public class UtenteDAOTest {
 
         try{
         Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/PROGETTO2", "root", "Internazionale99");
+        Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/PROGETTO2", "root", "Internazionale99!");
 
             
             
@@ -35,7 +35,7 @@ public class UtenteDAOTest {
         Brano brano = new Brano();
         brano.setId(1);
 
-       UtenteDAO dao =new UtenteDAO(con);
+       UtenteDAO dao = new UtenteDAO(con);
       
         
        utente1=dao.create("prova", "prova");
