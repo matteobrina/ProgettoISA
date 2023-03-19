@@ -100,11 +100,7 @@ public List<Brano> findByString(String stringa) throws MissingObjectException
             brano.setTitolo(rs.getString("Titolo"));
             brano.setAlbum(rs.getString("Album"));
             brano.setArtista(rs.getString("Artista"));
-            Blob blob = rs.getBlob("File");
-            int blobLength = (int) blob.length();
-            byte[] blobAsBytes = blob.getBytes(1, blobLength);
-            blob.free();
-            brano.setCanzone(blobAsBytes);
+            
             brani.add(brano);
             }
             while(rs.next());
@@ -155,11 +151,7 @@ public List<Brano> findAllBrani()
             brano.setTitolo(rs.getString("Titolo"));
             brano.setAlbum(rs.getString("Album"));
             brano.setArtista(rs.getString("Artista"));
-            Blob blob = rs.getBlob("File");
-            int blobLength = (int) blob.length();
-            byte[] blobAsBytes = blob.getBytes(1, blobLength);
-            blob.free();
-            brano.setCanzone(blobAsBytes);
+            
             brani.add(brano);
             }
             
