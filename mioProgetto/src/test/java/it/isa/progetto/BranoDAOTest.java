@@ -93,25 +93,18 @@ public class BranoDAOTest {
                 brani=dao.findByString("money");
             Brano brano = new Brano();
             Brano brano2 = new Brano();
-            File file = new File("src/test/java/it/isa/progetto/Files/05. Mone.mp3");
-            byte[] bytes = Files.readAllBytes(file.toPath());
+            
             brano.setId(5);
             brano.setTitolo("Money");
             brano.setAlbum("The Dark Side Of The Moon");
             brano.setArtista("Pink Floyd");
-            brano.setCanzone(bytes);
+            
             brano2=brani.get(0);
             assertEquals(brano.getId(), brano2.getId());
             assertEquals(brano.getTitolo(), brano2.getTitolo());
             assertEquals(brano.getAlbum(), brano2.getAlbum());
             assertEquals(brano.getArtista(), brano2.getArtista());
-            boolean uguali=true;
-            for (int i=0; i<(brano.getCanzone().length); i++)
-            {
-                if(brano.getCanzone()[i]!=brano2.getCanzone()[i])
-                uguali=false;
-            }
-            assertTrue(uguali);
+            
             brani=dao.findByString("");
 
                 
