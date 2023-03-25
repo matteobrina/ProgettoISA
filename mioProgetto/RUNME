@@ -1,0 +1,5 @@
+#!/bin/bash
+IP=$(ifconfig en0 | grep inet | awk '$1=="inet" {print $2}')
+export DISPLAY=$IP:0
+xhost +
+sudo docker container run -e DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix -it isa:2022 bash
