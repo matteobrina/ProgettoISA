@@ -24,7 +24,7 @@ public class BranoDAOTest {
     {
         try{
         Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/PROGETTO2", "root", "Internazionale99!");
+            Connection con= DriverManager.getConnection("jdbc:mysql://ec2-18-157-166-237.eu-central-1.compute.amazonaws.com:3306/PROGETTO2", "root", "Internazionale99!");
 
             
             Brano brano = new Brano();
@@ -66,7 +66,7 @@ public class BranoDAOTest {
     {
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
-                Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/PROGETTO2", "root", "Internazionale99!");
+                Connection con= DriverManager.getConnection("jdbc:mysql://ec2-18-157-166-237.eu-central-1.compute.amazonaws.com:3306/PROGETTO2", "root", "Internazionale99!");
 
                 BranoDAO dao = new BranoDAO(con);
                 
@@ -86,7 +86,7 @@ public class BranoDAOTest {
     {
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
-                Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/PROGETTO2", "root", "Internazionale99!");
+                Connection con= DriverManager.getConnection("jdbc:mysql://ec2-18-157-166-237.eu-central-1.compute.amazonaws.com:3306/PROGETTO2", "root", "Internazionale99!");
 
                 List<Brano> brani = new ArrayList<Brano>();
                 BranoDAO dao = new BranoDAO(con);
@@ -122,7 +122,7 @@ public class BranoDAOTest {
     {
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
-                Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/PROGETTO2", "root", "Internazionale99!");
+                Connection con= DriverManager.getConnection("jdbc:mysql://ec2-18-157-166-237.eu-central-1.compute.amazonaws.com:3306/PROGETTO2", "root", "Internazionale99!");
 
                 
                 BranoDAO dao = new BranoDAO(con);
@@ -145,7 +145,7 @@ public class BranoDAOTest {
     {
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
-                Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/PROGETTO2", "root", "Internazionale99!");
+                Connection con= DriverManager.getConnection("jdbc:mysql://ec2-18-157-166-237.eu-central-1.compute.amazonaws.com:3306/PROGETTO2", "root", "Internazionale99!");
 
             Statement st = con.createStatement();
 
@@ -175,7 +175,7 @@ public void findAllBraniSQLExceptionTest()
 {
     try{
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/PROGETTO2", "root", "Internazionale99!");
+            Connection con= DriverManager.getConnection("jdbc:mysql://ec2-18-157-166-237.eu-central-1.compute.amazonaws.com:3306/PROGETTO2", "root", "Internazionale99!");
             BranoDAO dao = new BranoDAO(con);
             con.close();
             dao.findAllBrani();
@@ -193,7 +193,7 @@ public void countAllBraniTest()
 {
     try{
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/PROGETTO2", "root", "Internazionale99!");
+            Connection con= DriverManager.getConnection("jdbc:mysql://ec2-18-157-166-237.eu-central-1.compute.amazonaws.com:3306/PROGETTO2", "root", "Internazionale99!");
             BranoDAO dao = new BranoDAO(con);
             int a = dao.countAllBrani();
             int c = ((dao.findAllBrani()).size());
@@ -224,7 +224,7 @@ public void countAllBraniSQLExceptionTest()
 {
     try{
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/PROGETTO2", "root", "Internazionale99!");
+            Connection con= DriverManager.getConnection("jdbc:mysql://ec2-18-157-166-237.eu-central-1.compute.amazonaws.com:3306/PROGETTO2", "root", "Internazionale99!");
             BranoDAO dao = new BranoDAO(con);
             con.close();
             dao.countAllBrani();
@@ -245,7 +245,7 @@ public void FindByIdSQLExceptionTest()
 {
     try{
         Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/PROGETTO2", "root", "Internazionale99!");
+        Connection con= DriverManager.getConnection("jdbc:mysql://ec2-18-157-166-237.eu-central-1.compute.amazonaws.com:3306/PROGETTO2", "root", "Internazionale99!");
         BranoDAO dao = new BranoDAO(con);
         con.close();
         dao.findById(1);
@@ -263,7 +263,7 @@ public void FindByStringSQLExceptionTest()
 {
     try{
         Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/PROGETTO2", "root", "Internazionale99!");
+        Connection con= DriverManager.getConnection("jdbc:mysql://ec2-18-157-166-237.eu-central-1.compute.amazonaws.com:3306/PROGETTO2", "root", "Internazionale99!");
         BranoDAO dao = new BranoDAO(con);
         con.close();
         dao.findByString("dark");
