@@ -76,7 +76,7 @@ public List<Brano> findByString(String stringa) throws MissingObjectException
     Brano brano;
 
     try{
-        String sql="SELECT *"
+        String sql="SELECT Id, Titolo, Album, Artista"
                 +" FROM Brano"
                 +" WHERE ( INSTR(Titolo,?)>0"
                 +" OR  INSTR(Album,?)>0"
@@ -136,7 +136,7 @@ public List<Brano> findAllBrani()
     Brano brano;
 
     try{
-        String sql="SELECT *"
+        String sql="SELECT Id, Titolo, Album, Artista"
                 +" FROM Brano"
                 +" ORDER BY ID DESC";
 

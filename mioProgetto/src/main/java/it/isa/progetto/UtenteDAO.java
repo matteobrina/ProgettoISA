@@ -119,7 +119,7 @@ public class UtenteDAO {
             throw new MissingObjectException("utente non trovato");
         }
 
-        sql= "SELECT *"
+        sql= "SELECT Brano.ID, Ha_ascoltato.ascolti"
         +" FROM Ha_ascoltato"
         +" INNER JOIN Brano ON Brano.ID=Ha_ascoltato.IDBrano"
         +" WHERE idUtente = ?";
@@ -189,7 +189,7 @@ public class UtenteDAO {
             throw new MissingObjectException("utente non trovato");
         }
 
-        sql= "SELECT *"
+        sql= "SELECT Brano.ID, Ha_ascoltato.ascolti"
         +" FROM Ha_ascoltato"
         +" INNER JOIN Brano ON Brano.ID=Ha_ascoltato.IDBrano"
         +" WHERE idUtente = ?";
