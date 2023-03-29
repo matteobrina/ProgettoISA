@@ -33,12 +33,6 @@
   <version>20-ea+6</version>
 </dependency>
 
-<!-- https://mvnrepository.com/artifact/org.openjfx/javafx-media -->
-<dependency>
-  <groupId>org.openjfx</groupId>
-  <artifactId>javafx-media</artifactId>
-  <version>20-ea+11</version>
-</dependency>
 
 
 
